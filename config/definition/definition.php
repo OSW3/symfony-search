@@ -31,10 +31,10 @@ return static function($definition)
              * @enum GET | POST
              * @default GET
              */
-            ->enumNode('method')
-                ->values([RequestMethods::toArray()])
-                ->defaultValue(RequestMethods::GET->value)
-            ->end()
+            // ->enumNode('method')
+            //     ->values([RequestMethods::toArray()])
+            //     ->defaultValue(RequestMethods::GET->value)
+            // ->end()
 
             /**
              * The query param (input name attr)
