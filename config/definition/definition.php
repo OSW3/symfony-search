@@ -141,10 +141,10 @@ return static function($definition)
                  * @enum 
                  * @default like
                  */
-                ->enumNode('match')
-                    ->values(RequestOperators::toArray())
-                    ->defaultValue(RequestOperators::LIKE->value)
-                ->end()
+                // ->enumNode('match')
+                //     ->values(RequestOperators::toArray())
+                //     ->defaultValue(RequestOperators::LIKE->value)
+                // ->end()
 
             ->end()->end()->end()
 
