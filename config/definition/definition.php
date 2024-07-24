@@ -1,7 +1,7 @@
 <?php
 
-use OSW3\Pagination\Enum\RequestMethods;
-use OSW3\Pagination\Enum\RequestOperators;
+use OSW3\Search\Enum\RequestMethods;
+use OSW3\Search\Enum\RequestOperators;
 
 return static function($definition)
 {

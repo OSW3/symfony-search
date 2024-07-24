@@ -1,5 +1,5 @@
 <?php
-namespace OSW3\Pagination\Enum;
+namespace OSW3\Search\Enum;
 
 use OSW3\Search\Trait\EnumTrait;
 
