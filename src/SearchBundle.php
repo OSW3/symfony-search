@@ -1,8 +1,8 @@
 <?php 
 namespace OSW3\Search;
 
-use OSW3\Search\DependencyInjection\Configuration;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use OSW3\Search\DependencyInjection\Configuration;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class SearchBundle extends Bundle

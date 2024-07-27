@@ -1,0 +1,8 @@
+form:
+    placeholder: Search for something
+    submit: search
+pagination:
+    first: first
+    last: last
+    previous: previous
+    next: next

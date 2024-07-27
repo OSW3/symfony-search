@@ -1,0 +1,10 @@
+{% set _attr = attr|default({}) %}
+{% set _attr = _add_attribute(_attr, 'id', id) %}
+{% set _attr = _add_attribute(_attr, 'class', class) %}
+{% set _attr = _add_attribute(_attr, 'method', search_request_method()) %}
+
+{% if search_results_route() is not null %}
+{% set _attr = _add_attribute(_attr, 'action', search_results_url()) %}
+{% endif %}
+
+{% extends template %}

@@ -7,6 +7,6 @@ enum RequestMethods: string
 {
     use EnumTrait;
 
-    case GET  = 'get';
-    case POST = 'post';
+    case GET  = 'GET';
+    case POST = 'POST';
 }

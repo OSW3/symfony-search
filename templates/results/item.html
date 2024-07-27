@@ -1,0 +1,19 @@
+<article>
+    <div>
+        <strong><a href="{{ url }}">{{ title|highlight }}</a></strong> - {{ alias }} - {{ entity.id }}
+        {% set title_stat = highlight_stat() %}
+    </div>
+    {# <div>price: {{ entity.price }} €</div> #}
+    <p>{{ description|highlight }}</p>
+    {% set description_stat = highlight_stat() %}
+
+    <small>
+    <details>
+        <summary><b>infos</b></summary>
+            <div>entity alias : {{ alias }}</div>
+            <div>title stat : {{ title_stat }}</div>
+            <div>description stat : {{ description_stat }}</div>
+        </details>
+    </small>
+    <br>
+</article>

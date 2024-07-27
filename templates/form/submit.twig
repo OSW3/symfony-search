@@ -1,0 +1,4 @@
+{% set _attr = attr|default({}) %}
+{% set _attr = _add_attribute(_attr, 'type', "submit") %}
+
+{% extends "@Search/form/submit.html" %}

@@ -1,0 +1,8 @@
+{% set _attr = attr|default({}) %}
+{% set _attr = _add_attribute(_attr, 'type', "search") %}
+{% set _attr = _add_attribute(_attr, 'placeholder', placeholder) %}
+{% set _attr = _add_attribute(_attr, 'name', search_request_parameter()) %}
+{% set _attr = _add_attribute(_attr, 'value', search_request_expression()) %}
+{% set _attr = _add_attribute(_attr, 'aria-label', label) %}
+
+{% extends "@Search/form/input.html" %}

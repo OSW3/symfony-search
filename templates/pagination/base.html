@@ -1,0 +1,9 @@
+<a href="{{ search_pagination_first_link() }}">first</a>
+<a href="{{ search_pagination_prev_link() }}">prev</a>
+<ul>
+{% for page in search_pagination_links() %}
+    <li><a href="{{ page.url }}">{{ loop.index }} {{ page.current }}</a></li>
+{% endfor %}
+</ul>
+<a href="{{ search_pagination_next_link() }}">next</a>
+<a href="{{ search_pagination_last_link() }}">last</a>

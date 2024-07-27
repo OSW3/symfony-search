@@ -5,143 +5,137 @@ use OSW3\Search\Enum\RequestOperators;
 
 return static function($definition)
 {
-    $definition->rootNode()->children()
+    $definition->rootNode()->arrayPrototype()
+        ->info('Provide a configuration settings.')
+        ->children()
 
-        /**
-         * Config of the search form
-         * 
-         * @var null|array
-         */
-        ->arrayNode('form')->isRequired()->children()
+        ->arrayNode('form')
+            ->info('Search form configuration settings.')
+            ->addDefaultsIfNotSet()->children()
 
-            /**
-             * Template of the form
-             * 
-             * @var null|string
-             * @default @Search/form/default.html.twig
-             */
             ->scalarNode('template')
-                ->defaultValue("@Search/form.html.twig")
+                ->info('Specifies the path to the template file used to display the search form')
+                ->defaultValue("@Search/form/base.html")
             ->end()
 
-            /**
-             * Method attribute of the form
-             * 
-             * @var string
-             * @enum GET | POST
-             * @default GET
-             */
+        ->end()->end()
+
+        ->arrayNode('request')
+            ->info('Search request configuration settings.')
+            ->addDefaultsIfNotSet()->children()
+
+            ->scalarNode('route')
+                ->info('Specifies the route to execute the query and display the search results.')
+                ->defaultValue('search')
+            ->end()
+
             ->enumNode('method')
+                ->info('Specifies the request method to execute the query')
                 ->values(RequestMethods::toArray())
                 ->defaultValue(RequestMethods::GET->value)
             ->end()
 
-            /**
-             * The query param (input name attr)
-             * 
-             * @var string
-             * @default q
-             */
             ->scalarNode('parameter')
+                ->info('Specifies the query parameter to pass the search expression to the query')
                 ->defaultValue("q")
             ->end()
 
         ->end()->end()
 
-        /**
-         * Config of the results
-         * 
-         * @var null|array
-         */
-        ->arrayNode('results')->isRequired()->children()
+        ->arrayNode('results')
+            ->info('Search results configuration settings.')
+            ->addDefaultsIfNotSet()->children()
 
-            /**
-             * Template of the results
-             * 
-             * @var null|string
-             * @required
-             */
-            ->scalarNode('template')->defaultValue("@Search/results.html.twig")->end()
+            ->scalarNode('template')
+                ->info('Specifies the path to the template file used to display the results.')
+                ->defaultValue("@Search/results/base.html")
+            ->end()
+    
+            ->arrayNode('pagination')
+                ->info('Results pagination configuration settings.')
+                ->addDefaultsIfNotSet()->children()
 
+                ->scalarNode('parameter')
+                    ->info('Specifies the parameter of the current page.')
+                    ->defaultValue("page")
+                ->end()
 
-            ->scalarNode('base')->defaultValue("base.html.twig")->end()
+                ->integerNode('per_page')
+                    ->info('Specifies the number of item shown per page.')
+                    ->defaultValue(10)
+                ->end()
+    
+            ->end()->end()
 
-            /**
-             * Results route
-             * 
-             * @var null|string
-             * @required
-             */
-            ->scalarNode('route')->defaultValue('search')->end()
+            ->scalarNode('highlight')
+                ->info('Specifies the name of the CSS class used to highlight the searched expression in the results page.')
+                ->defaultNull()
+            ->end()
 
         ->end()->end()
 
-        /**
-         * Config of the entities
-         * 
-         * @var null|array
-         */
-        ->arrayNode('entities')->arrayPrototype()->children()
+        ->arrayNode('entities')
+            // TODO: Add "stat" boolean param, if true save the search result in database
+            ->info('Configuration parameters for entities to be included in the search query.')
+            ->arrayPrototype()
+            ->info('Specifies the namespace of the entity to be included in the search query (App\Entity\Pizza).')
+            ->children()
 
-            /**
-             * Template part of the item on results page
-             * 
-             * @var string
-             */
-            ->scalarNode('template')->isRequired()->end()
-            
-            /**
-             * Class name to highlight the expression in the result
-             */
-            ->scalarNode('highlight')->defaultNull()->end()
+            ->scalarNode('alias')
+                ->info('Specifies an entity alias to read and manipulate the results table more easily.')
+                ->defaultNull()
+            ->end()
 
-            /**
-             * Template part of the item on results page
-             * 
-             * @var null|string
-             */
-            ->scalarNode('alias')->defaultNull()->end()
+            // ->arrayNode('serialize')
+            //     ->info('Specifies names for API serialization.')
+            //     ->scalarPrototype()->end()
+            // ->end()
 
-            /**
-             * The route to generate link to show the item
-             * 
-             * @var null|string
-             */
-            ->scalarNode('route')->defaultNull()->end()
-            
-            
-            /**
-             * Add parameter to the route
-             * 
-             * @var array
-             * @default ['id']
-             */
-            ->arrayNode('route_parameters')->defaultValue(['id'])->scalarPrototype()->end()->end()
+            ->scalarNode('template')
+                ->info('Specifies the path to the template file used to display an item of this entity in the results page.')
+                ->defaultValue("@Search/results/item.html")
+            ->end()
 
+            ->arrayNode('route')
+                ->info('Entity route configuration settings.')
+                ->addDefaultsIfNotSet()->children()
 
-            /**
-             * Serializer group
-             * 
-             * @var null|array
-             */
-            ->arrayNode('serialize')->scalarPrototype()->end()->end()
+                ->scalarNode('name')
+                    ->info('Specifies the name of the route to show the details of the entity.')
+                    ->isRequired()
+                ->end()
 
-            /**
-             * Criteria 
-             * Used to generate a WHERE clause of the query
-             * 
-             * @var array
-             */
-            ->arrayNode('criteria')->arrayPrototype()->children()
+                ->arrayNode('parameters')
+                    ->info('Specifies the names of the parameters from the previous route that should be generated.')    
+                    ->defaultValue(['id'])
+                    ->scalarPrototype()->end()
+                ->end()
+    
+            ->end()->end()
 
-                /**
-                 * Matching method
-                 * 
-                 * @var string
-                 * @enum 
-                 * @default like
-                 */
+            ->scalarNode('title')
+                ->info('Specifies the name of the entity property that you want to use as the title in the results.')
+                ->defaultValue("title")
+            ->end()
+
+            ->scalarNode('description')
+                ->info('Specifies the name of the entity property that you want to use as the description in the results.')
+                ->defaultValue("description")
+            ->end()
+
+            ->scalarNode('illustration')
+                ->info('Specifies the name of the entity property that you want to use as the illustration in the results.')
+                ->defaultFalse()
+            ->end()
+
+            ->arrayNode('criteria')
+                ->info('Configuration parameters for query criteria.')
+                ->arrayPrototype()
+                ->info('Specify the name of the property that will be indexed by the search query.')
+                ->children()
+
                 ->enumNode('match')
+                    ->info('Specify the operator that will be used to find a result.')
                     ->values(RequestOperators::toArray())
                     ->defaultValue(RequestOperators::LIKE->value)
                 ->end()
@@ -150,6 +144,26 @@ return static function($definition)
 
         ->end()->end()->end()
 
+    ->end()->end();
 
-    ->end();
+    $definition->rootNode()->validate()->always(function ($providers) {
+
+        foreach ($providers as $provider => $providerOptions)
+        {
+            foreach ($providerOptions['entities'] as $entity => $entityOptions)
+            {
+                if (empty($entity['alias']))
+                {
+                    $entityName = explode("\\", $entity);
+                    $entityName = end($entityName);
+                    $entityName = strtolower($entityName);
+
+                    $providers[$provider]['entities'][$entity]['alias'] = $entityName;
+                }
+            }
+        }
+
+        return $providers;
+
+    })->end();
 };
