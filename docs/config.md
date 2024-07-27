@@ -98,7 +98,7 @@ search:
 
 ## Config properties
 
-- **`provider`** `array` - `required`  
+- **`provider`** *array* - *required*  
     Provide a configuration settings.
         
     A provider is simply a custom name to identify the configuration settings that follow it.
