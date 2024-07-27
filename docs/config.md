@@ -80,7 +80,7 @@ search:
                         match: like
 
             App\Entity\Product:
-                alias: book 
+                alias: product 
                 serialize: ['product']
                 template: "@Search/results/item.html"
                 route: 
@@ -109,8 +109,8 @@ A provider is simply a custom name to identify the configuration settings that f
 
 ```yaml
 search:
-    first_provider: ...
-    second_provider: ...
+    first_provider: [ ... ]
+    second_provider: [ ... ]
 ```
 
 
@@ -125,7 +125,7 @@ Search form configuration settings.
 ```yaml
 search:
     first_provider: 
-        from: ...
+        from: [ ... ]
 ```
 
 
@@ -159,7 +159,7 @@ Search request configuration settings.
 ```yaml
 search:
     first_provider: 
-        request: ...
+        request: [ ... ]
 ```
 
 
@@ -229,138 +229,375 @@ search:
 ```yaml
 search:
     first_provider: 
-        results: ...
+        results: [ ... ]
 ```
 
 
 ### template
 `search.<provider>.results.template`
 
+- @var `string`
+- `optional`
+
+*Default value*: `@SeSearch/results/item.html.twig`
+
+Specifies the path to the template file used to display the results.
+
+You can create your own [customized results template](./results.md#create-your-own-customized-results-template).
+
+```yaml
+search:
+    first_provider: 
+        results: 
+            template: '@SeSearch/results/item.html.twig'
+```
+
 
 ### pagination
 `search.<provider>.results.pagination`
+
+- @var `array`
+- `optional`
+
+Results pagination configuration settings.
+
+```yaml
+search:
+    first_provider: 
+        results: 
+            pagination: [ ... ]
+```
 
 
 ### parameter
 `search.<provider>.results.pagination.parameter`
 
+- @var `string`
+- `optional`
+
+*Default value*: `page`
+
+Specifies the parameter of the current page.
+
+Example: `/search?q=lorem&page=2`.
+
+```yaml
+search:
+    first_provider: 
+        results: 
+            pagination: 
+                parameter: page
+```
+
 
 ### per_page
 `search.<provider>.results.pagination.per_page`
+
+- @var `integer`
+- `optional`
+
+*Default value*: `10`
+
+Specifies the number of item shown per page.
+
+```yaml
+search:
+    first_provider: 
+        results: 
+            pagination: 
+                parameter: page
+```
 
 
 ### highlight
 `search.<provider>.results.highlight`
 
+- @var `string`
+- `optional`
+
+*Default value*: `null`
+
+Specifies the name of the CSS class used to highlight the searched expression in the results page.
+
+See [Highlight](./highlight.md)
+
+```yaml
+search:
+    first_provider: 
+        results: 
+            pagination: 
+                highlight: highlight
+```
 
 
+### entities
+`search.<provider>.entities`
 
-- **`provider.results`** *array* - *optional*
-    Search results configuration settings.
+- @var `array`
+- `required`
 
-- **`provider.results.template`** *string* - *optional*
-    *Default value*: `@SeSearch/results/item.html.twig`
-
-    Specifies the path to the template file used to display the results.
-    
-    You can create your own [customized results template](./results.md#create-your-own-customized-results-template).
-    
-- **`provider.results.pagination`** *array* - *optional*
-    Results pagination configuration settings.
-
-- **`provider.results.pagination.parameter`** *string* - *optional*
-    *Default value*: `page`
-
-    Specifies the parameter of the current page.
-
-    Example: `/search?q=lorem&page=2`.
-
-- **`provider.results.pagination.per_page`** *integer* - *optional*
-    *Default value*: `10`
-
-    Specifies the number of item shown per page.
-
-- **`provider.results.highlight`** *string* - *optional*
-    *Default value*: `null`
-
-    Specifies the name of the CSS class used to highlight the searched expression in the results page.
-
-    See [Highlight](./highlight.md)
-
-- `entities` *array* - *required*
 Configuration parameters for entities to be included in the search query.
 
-- `Entity\Namespace` *array* - *required*
-    Specifies the namespace of the entity to be included in the search query.
+```yaml
+search:
+    first_provider: 
+        entities: [ ... ]
+```
 
-    - `alias` *string* - *optional*
-        *Default value*: `null`
+### entity
+`search.<provider>.entities.<entity>`
 
-        Specifies an entity alias to read and manipulate the results table more easily.
+- @var `array`
+- `required`
 
-        If null, the alias will be automatically generated.
+Specifies the namespace of the entity to be included in the search query.
 
-        Example if the Entity is `App\Entity\Book`, the alias will be `book`
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book: [ ... ]
+```
 
-    - `serialize` *array* - *optional*
-        *Default value*: `[]`
 
-    - `template` *string* - *optional*
-        *Default value*: `@Search/results/item.html`
+### alias
+`search.<provider>.entities.<entity>.alias`
 
-        Specifies the path to the template file used to display an item of this entity in the results page.
+- @var `string`
+- `optional`
+
+*Default value*: `null`
+
+Specifies an entity alias to read and manipulate the results table more easily.
+
+If null, the alias will be automatically generated.
+
+Example if the Entity is `App\Entity\Book`, the alias will be `book`
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                alias: book
+```
+
+
+### serialize
+`search.<provider>.entities.<entity>.serialize`
+
+- @var `array`
+- `optional`
+
+*Default value*: `[]`
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                serialize: [ ... ]
+```
+
+### template
+`search.<provider>.entities.<entity>.template`
+
+- @var `string`
+- `optional`
+
+*Default value*: `@Search/results/item.html`
+
+Specifies the path to the template file used to display an item of this entity in the results page.
+
+You can create your own [customized results template](./item.md#create-your-own-customized-template).
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                template: '@Search/results/item.html'
+```
+
         
-        You can create your own [customized results template](./item.md#create-your-own-customized-template).
-        
-    - `route` *array* - *required*
-        Entity route configuration settings.
+### route
+`search.<provider>.entities.<entity>.route`
 
-        - `name` *string* - *required*
-            Specifies the name of the route to show the details of the entity.
+- @var `array`
+- `required`
 
-        - `parameters` *array* - *optional*
-            *Default value*: `['id']`
+Entity route configuration settings.
 
-            Specifies the names of the parameters from the previous route that should be generated.
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                route: [ ... ]
+```
 
-    - `title` *null|string|false* - *optional*
-        *Default value*: `null`
 
-        Specifies the name of the entity property that you want to use as the title in the results.
+### name
+`search.<provider>.entities.<entity>.route.name`
 
-        If `null`, the bundle get the property named `title` of the entity like `$entity->getTitle()`.
+- @var `string`
+- `required`
 
-        if false, the bundle ignores retrieving the property value.
+Specifies the name of the route to show the details of the entity.
 
-    - `description` *null|string|false* - *optional*
-        *Default value*: `null`
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                route: 
+                    name: app_book_show
+```
 
-        Specifies the name of the entity property that you want to use as the description in the results.
 
-        If `null`, the bundle get the property named `description` of the entity like `$entity->getDescription()`.
+### parameters
+`search.<provider>.entities.<entity>.route.parameters`
 
-        if false, the bundle ignores retrieving the property value.
+- @var `array`
+- `optional`
 
-    - `illustration` *null|string|false* - *optional*
-        *Default value*: `false`
+*Default value*: `['id']`
 
-        Specifies the name of the entity property that you want to use as the illustration in the results.
+Specifies the names of the parameters from the previous route that should be generated.
 
-        If `null`, the bundle get the property named `illustration` of the entity like `$entity->getIllustration()`.
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                route: 
+                    parameters: ['id']
+```
 
-        if false, the bundle ignores retrieving the property value.
 
-    - `criteria` *array* - *required*
-        Configuration parameters for query criteria.
-        
-        - `property` *array* - *required*
-            Specify the name of the property that will be indexed by the search query.
+### title
+`search.<provider>.entities.<entity>.title`
 
-            Example: `title`
-            
-            - `match` *enum* - *optional*
-                *Accepted values*: `equal`, `is-not`, `like`, `left-like`, `right-like`, `not-like`, `not-left-like`, `not-right-like`, `post`
-                *Default value*: `like`
+- @var `null|string|false`
+- `optional`
 
-                Specify the operator that will be used to find a result.
+*Default value*: `null`
 
+Specifies the name of the entity property that you want to use as the title in the results.
+
+If `null`, the bundle get the property named `title` of the entity like `$entity->getTitle()`.
+
+if false, the bundle ignores retrieving the property value.
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                title: title
+```
+
+
+### description
+`search.<provider>.entities.<entity>.description`
+
+- @var `null|string|false`
+- `optional`
+
+*Default value*: `null`
+
+Specifies the name of the entity property that you want to use as the description in the results.
+
+If `null`, the bundle get the property named `description` of the entity like `$entity->getDescription()`.
+
+if false, the bundle ignores retrieving the property value.
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                description: description
+```
+
+
+### illustration
+`search.<provider>.entities.<entity>.illustration`
+
+- @var `null|string|false`
+- `optional`
+
+*Default value*: `false`
+
+Specifies the name of the entity property that you want to use as the illustration in the results.
+
+If `null`, the bundle get the property named `illustration` of the entity like `$entity->getIllustration()`.
+
+if false, the bundle ignores retrieving the property value.
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                illustration: false
+```
+
+
+### criteria
+`search.<provider>.entities.<entity>.criteria`
+
+- @var `array`
+- `required`
+
+Configuration parameters for query criteria.
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                criteria: [ ... ]
+```
+
+
+### property
+`search.<provider>.entities.<entity>.criteria.<property>`
+
+- @var `array`
+- `required`
+
+Specify the name of the property that will be indexed by the search query.
+
+Example: `title`
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                criteria: 
+                    title: [ ... ]
+```
+
+    
+### match
+`search.<provider>.entities.<entity>.criteria.<property>.match`
+
+- @var `enum`
+- `optional`
+
+*Accepted values*: `equal`, `is-not`, `like`, `left-like`, `right-like`, `not-like`, `not-left-like`, `not-right-like`, `post`
+*Default value*: `like`
+
+Specify the operator that will be used to find a result.
+
+```yaml
+search:
+    first_provider: 
+        entities: 
+            App\Entity\Book:
+                criteria: 
+                    title: 
+                        match: like
+```
