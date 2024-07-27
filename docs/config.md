@@ -108,10 +108,10 @@ search:
     Search form configuration settings.
 
 - **`provider.form.template`** *string* - *optional* 
+
     *Default value*: `@Search/form/base.html`
 
-    Specifies the path to the template file used to display the search form.
-                
+    Specifies the path to the template file used to display the search form. 
     You can create your own [customized form template](./form.md#customize-your-search-form).
 
 - `request` *array* - *optional*
