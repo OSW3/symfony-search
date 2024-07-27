@@ -110,5 +110,6 @@
 ## Misc
 
 - `highlight()`
+    Return the string with marker tag
 
 - `highlight_stat()`
