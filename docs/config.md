@@ -98,23 +98,22 @@ search:
 
 ## Config properties
 
-### `provider`
-`array` - `required`  
-Provide a configuration settings.
-    
-A provider is simply a custom name to identify the configuration settings that follow it.
+- **`provider`** (`array` - `required`)  
+    Provide a configuration settings.
+        
+    A provider is simply a custom name to identify the configuration settings that follow it.
 
-    - `form` *array* - *optional*
-        Search form configuration settings.
+- **`provider.form`** (`array` - `optional`)  
+    Search form configuration settings.
 
-        - `template` *string* - *optional*
-            *Default value*: `@Search/form/base.html`
+- **`provider.form.template`** (`string` - `optional`)  
+    *Default value*: `@Search/form/base.html`
 
-            Specifies the path to the template file used to display the search form.
-            
-            You can create your own [customized form template](./form.md#customize-your-search-form).
+    Specifies the path to the template file used to display the search form.
+                
+    You can create your own [customized form template](./form.md#customize-your-search-form).
 
-    - `request` *array* - *optional*
+- `request` *array* - *optional*
         Search request configuration settings.
 
         - `route` *string* - *optional*
