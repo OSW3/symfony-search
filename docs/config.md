@@ -113,6 +113,7 @@ search:
     second_provider: ...
 ```
 
+
 ### form
 `search.<provider>.form`
 
@@ -126,6 +127,7 @@ search:
     first_provider: 
         from: ...
 ```
+
 
 ### template
 `search.<provider>.form.template`
@@ -144,30 +146,83 @@ search:
         from: 
             template: '@Search/form/base.html'
 ```
-   
-   
 
-- **`provider.request`** *array* - *optional*
-    Search request configuration settings.
 
-- **`provider.request.route`** *string* - *optional*
-    *Default value*: `search`
+### request
+`search.<provider>.request`
 
-    Specifies the route to execute the query and display the search results. 
-    Yan can create your own [customized route and controller](./controller.md#create-your-own-customized-route-and-controller).
+- @var `array`
+- `optional`
 
-- **`provider.request.method`** *enum* - *optional*
-    *Default value*: `GET`
-    *Accepted values*: `GET`,`POST`
+Search request configuration settings.
 
-    Specifies the request method to execute the query.
 
-- **`provider.request.parameter`** *string* - *optional*
-    *Default value*: `q`
+### route
+`search.<provider>.request.route`
 
-    Specifies the query parameter to pass the search expression to the query. 
-    Example if the user search "lorem", the request URL wil be `/search?q=lorem`.
+- @var `array`
+- `optional`
 
+*Default value*: `search`
+
+Specifies the route to execute the query and display the search results. 
+Yan can create your own [customized route and controller](./controller.md#create-your-own-customized-route-and-controller).
+
+
+### method
+`search.<provider>.request.method`
+
+- @var `enum`
+- `optional`
+
+*Default value*: `GET`
+*Accepted values*: `GET`,`POST`
+
+Specifies the request method to execute the query.
+
+
+### parameter
+`search.<provider>.request.parameter`
+
+- @var `string`
+- `optional`
+
+*Default value*: `q`
+
+Specifies the query parameter to pass the search expression to the query. 
+Example if the user search "lorem", the request URL wil be `/search?q=lorem`.
+
+
+### results
+`search.<provider>.results`
+
+
+### template
+`search.<provider>.results.template`
+
+
+### pagination
+`search.<provider>.results.pagination`
+
+
+### parameter
+`search.<provider>.results.pagination.parameter`
+
+
+### per_page
+`search.<provider>.results.pagination.per_page`
+
+
+### highlight
+`search.<provider>.results.highlight`
+
+
+### 
+
+
+
+
+- **`provider.request.parameter`** 
 - **`provider.results`** *array* - *optional*
     Search results configuration settings.
 
