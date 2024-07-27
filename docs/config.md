@@ -107,20 +107,45 @@ search:
 Provide a configuration settings.  
 A provider is simply a custom name to identify the configuration settings that follow it.
 
+```yaml
+search:
+    first_provider: ...
+    second_provider: ...
+```
+
 ### form
 `search.<provider>.form`
 
+- @var `array`
+- `optional`
 
-- **`provider.form`** *array* - *optional*
-    
-    Search form configuration settings.
+Search form configuration settings.
 
-- **`provider.form.template`** *string* - *optional* 
+```yaml
+search:
+    first_provider: 
+        from: ...
+```
 
-    *Default value*: `@Search/form/base.html`
+### template
+`search.<provider>.form.template`
 
-    Specifies the path to the template file used to display the search form. 
-    You can create your own [customized form template](./form.md#customize-your-search-form).
+- @var `string`
+- `optional`
+
+*Default value*: `@Search/form/base.html`
+
+Specifies the path to the template file used to display the search form. 
+You can create your own [customized form template](./form.md#customize-your-search-form).
+
+```yaml
+search:
+    first_provider: 
+        from: 
+            template: '@Search/form/base.html'
+```
+   
+   
 
 - **`provider.request`** *array* - *optional*
     Search request configuration settings.
