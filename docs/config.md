@@ -156,6 +156,12 @@ search:
 
 Search request configuration settings.
 
+```yaml
+search:
+    first_provider: 
+        request: ...
+```
+
 
 ### route
 `search.<provider>.request.route`
@@ -167,6 +173,13 @@ Search request configuration settings.
 
 Specifies the route to execute the query and display the search results. 
 Yan can create your own [customized route and controller](./controller.md#create-your-own-customized-route-and-controller).
+
+```yaml
+search:
+    first_provider: 
+        request: 
+            route: search
+```
 
 
 ### method
@@ -180,6 +193,13 @@ Yan can create your own [customized route and controller](./controller.md#create
 
 Specifies the request method to execute the query.
 
+```yaml
+search:
+    first_provider: 
+        request: 
+            method: GET
+```
+
 
 ### parameter
 `search.<provider>.request.parameter`
@@ -192,9 +212,25 @@ Specifies the request method to execute the query.
 Specifies the query parameter to pass the search expression to the query. 
 Example if the user search "lorem", the request URL wil be `/search?q=lorem`.
 
+```yaml
+search:
+    first_provider: 
+        request: 
+            parameter: q
+```
+
 
 ### results
 `search.<provider>.results`
+
+- @var `array`
+- `optional`
+
+```yaml
+search:
+    first_provider: 
+        results: ...
+```
 
 
 ### template
@@ -217,12 +253,8 @@ Example if the user search "lorem", the request URL wil be `/search?q=lorem`.
 `search.<provider>.results.highlight`
 
 
-### 
 
 
-
-
-- **`provider.request.parameter`** 
 - **`provider.results`** *array* - *optional*
     Search results configuration settings.
 
