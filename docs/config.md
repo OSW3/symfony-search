@@ -114,135 +114,133 @@ search:
     Specifies the path to the template file used to display the search form. 
     You can create your own [customized form template](./form.md#customize-your-search-form).
 
-- `request` *array* - *optional*
-        Search request configuration settings.
+- **`provider.request`** *array* - *optional*
+    Search request configuration settings.
 
-        - `route` *string* - *optional*
-            *Default value*: `search`
+- **`provider.request.route`** *string* - *optional*
+    *Default value*: `search`
 
-            Specifies the route to execute the query and display the search results.
+    Specifies the route to execute the query and display the search results. 
+    Yan can create your own [customized route and controller](./controller.md#create-your-own-customized-route-and-controller).
+
+- **`provider.request.method`** *enum* - *optional*
+    *Default value*: `GET`
+    *Accepted values*: `GET`,`POST`
+
+    Specifies the request method to execute the query.
+
+- **`provider.request.parameter`** *string* - *optional*
+    *Default value*: `q`
+
+    Specifies the query parameter to pass the search expression to the query. 
+    Example if the user search "lorem", the request URL wil be `/search?q=lorem`.
+
+- **`provider.results`** *array* - *optional*
+    Search results configuration settings.
+
+- **`provider.results.template`** *string* - *optional*
+    *Default value*: `@SeSearch/results/item.html.twig`
+
+    Specifies the path to the template file used to display the results.
+    
+    You can create your own [customized results template](./results.md#create-your-own-customized-results-template).
+    
+- **`provider.results.pagination`** *array* - *optional*
+    Results pagination configuration settings.
+
+    - **`provider.results.pagination.parameter`** *string* - *optional*
+        *Default value*: `page`
+
+        Specifies the parameter of the current page.
+
+        Example: `/search?q=lorem&page=2`.
+    
+    - **`provider.results.pagination.per_page`** *integer* - *optional*
+        *Default value*: `10`
+
+        Specifies the number of item shown per page.
+
+- **`provider.results.highlight`** *string* - *optional*
+    *Default value*: `null`
+
+    Specifies the name of the CSS class used to highlight the searched expression in the results page.
+
+    See [Highlight](./highlight.md)
+
+- `entities` *array* - *required*
+Configuration parameters for entities to be included in the search query.
+
+- `Entity\Namespace` *array* - *required*
+    Specifies the namespace of the entity to be included in the search query.
+
+    - `alias` *string* - *optional*
+        *Default value*: `null`
+
+        Specifies an entity alias to read and manipulate the results table more easily.
+
+        If null, the alias will be automatically generated.
+
+        Example if the Entity is `App\Entity\Book`, the alias will be `book`
+
+    - `serialize` *array* - *optional*
+        *Default value*: `[]`
+
+    - `template` *string* - *optional*
+        *Default value*: `@Search/results/item.html`
+
+        Specifies the path to the template file used to display an item of this entity in the results page.
+        
+        You can create your own [customized results template](./item.md#create-your-own-customized-template).
+        
+    - `route` *array* - *required*
+        Entity route configuration settings.
+
+        - `name` *string* - *required*
+            Specifies the name of the route to show the details of the entity.
+
+        - `parameters` *array* - *optional*
+            *Default value*: `['id']`
+
+            Specifies the names of the parameters from the previous route that should be generated.
+
+    - `title` *null|string|false* - *optional*
+        *Default value*: `null`
+
+        Specifies the name of the entity property that you want to use as the title in the results.
+
+        If `null`, the bundle get the property named `title` of the entity like `$entity->getTitle()`.
+
+        if false, the bundle ignores retrieving the property value.
+
+    - `description` *null|string|false* - *optional*
+        *Default value*: `null`
+
+        Specifies the name of the entity property that you want to use as the description in the results.
+
+        If `null`, the bundle get the property named `description` of the entity like `$entity->getDescription()`.
+
+        if false, the bundle ignores retrieving the property value.
+
+    - `illustration` *null|string|false* - *optional*
+        *Default value*: `false`
+
+        Specifies the name of the entity property that you want to use as the illustration in the results.
+
+        If `null`, the bundle get the property named `illustration` of the entity like `$entity->getIllustration()`.
+
+        if false, the bundle ignores retrieving the property value.
+
+    - `criteria` *array* - *required*
+        Configuration parameters for query criteria.
+        
+        - `property` *array* - *required*
+            Specify the name of the property that will be indexed by the search query.
+
+            Example: `title`
             
-            Yan can create your own [customized route and controller](./controller.md#create-your-own-customized-route-and-controller).
+            - `match` *enum* - *optional*
+                *Accepted values*: `equal`, `is-not`, `like`, `left-like`, `right-like`, `not-like`, `not-left-like`, `not-right-like`, `post`
+                *Default value*: `like`
 
-        - `method` *enum* - *optional*
-            *Default value*: `GET`
-            *Accepted values*: `GET`,`POST`
-
-            Specifies the request method to execute the query.
-
-        - `parameter` *string* - *optional*
-            *Default value*: `q`
-
-            Specifies the query parameter to pass the search expression to the query.
-            
-            Example if the user search "lorem", the request URL wil be `/search?q=lorem`.
-
-    - `results` *array* - *optional*
-        Search results configuration settings.
-
-        - `template` *string* - *optional*
-            *Default value*: `@SeSearch/results/item.html.twig`
-
-            Specifies the path to the template file used to display the results.
-            
-            You can create your own [customized results template](./results.md#create-your-own-customized-results-template).
-            
-        - `pagination` *array* - *optional*
-            Results pagination configuration settings.
-
-            - `parameter` *string* - *optional*
-                *Default value*: `page`
-
-                Specifies the parameter of the current page.
-
-                Example: `/search?q=lorem&page=2`.
-            
-            - `per_page` *integer* - *optional*
-                *Default value*: `10`
-
-                Specifies the number of item shown per page.
-
-        - `highlight` *string* - *optional*
-            *Default value*: `null`
-
-            Specifies the name of the CSS class used to highlight the searched expression in the results page.
-
-            See [Highlight](./highlight.md)
-
-    - `entities` *array* - *required*
-        Configuration parameters for entities to be included in the search query.
-
-        - `Entity\Namespace` *array* - *required*
-            Specifies the namespace of the entity to be included in the search query.
-
-            - `alias` *string* - *optional*
-                *Default value*: `null`
-
-                Specifies an entity alias to read and manipulate the results table more easily.
-
-                If null, the alias will be automatically generated.
-
-                Example if the Entity is `App\Entity\Book`, the alias will be `book`
-
-            - `serialize` *array* - *optional*
-                *Default value*: `[]`
-
-            - `template` *string* - *optional*
-                *Default value*: `@Search/results/item.html`
-
-                Specifies the path to the template file used to display an item of this entity in the results page.
-                
-                You can create your own [customized results template](./item.md#create-your-own-customized-template).
-                
-            - `route` *array* - *required*
-                Entity route configuration settings.
-
-                - `name` *string* - *required*
-                    Specifies the name of the route to show the details of the entity.
-
-                - `parameters` *array* - *optional*
-                    *Default value*: `['id']`
-
-                    Specifies the names of the parameters from the previous route that should be generated.
-
-            - `title` *null|string|false* - *optional*
-                *Default value*: `null`
-
-                Specifies the name of the entity property that you want to use as the title in the results.
-
-                If `null`, the bundle get the property named `title` of the entity like `$entity->getTitle()`.
-
-                if false, the bundle ignores retrieving the property value.
-
-            - `description` *null|string|false* - *optional*
-                *Default value*: `null`
-
-                Specifies the name of the entity property that you want to use as the description in the results.
-
-                If `null`, the bundle get the property named `description` of the entity like `$entity->getDescription()`.
-
-                if false, the bundle ignores retrieving the property value.
-
-            - `illustration` *null|string|false* - *optional*
-                *Default value*: `false`
-
-                Specifies the name of the entity property that you want to use as the illustration in the results.
-
-                If `null`, the bundle get the property named `illustration` of the entity like `$entity->getIllustration()`.
-
-                if false, the bundle ignores retrieving the property value.
-
-            - `criteria` *array* - *required*
-                Configuration parameters for query criteria.
-                
-                - `property` *array* - *required*
-                    Specify the name of the property that will be indexed by the search query.
-
-                    Example: `title`
-                    
-                    - `match` *enum* - *optional*
-                        *Accepted values*: `equal`, `is-not`, `like`, `left-like`, `right-like`, `not-like`, `not-left-like`, `not-right-like`, `post`
-                        *Default value*: `like`
-
-                        Specify the operator that will be used to find a result.
+                Specify the operator that will be used to find a result.
 
