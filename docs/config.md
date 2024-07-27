@@ -98,10 +98,18 @@ search:
 
 ## Config properties
 
-- **`provider`** *array* - *required*
+### provider
+`search.<provider>`
 
-    Provide a configuration settings.  
-    A provider is simply a custom name to identify the configuration settings that follow it.
+- @var `array`
+- `required`
+
+Provide a configuration settings.  
+A provider is simply a custom name to identify the configuration settings that follow it.
+
+### form
+`search.<provider>.form`
+
 
 - **`provider.form`** *array* - *optional*
     
@@ -148,17 +156,17 @@ search:
 - **`provider.results.pagination`** *array* - *optional*
     Results pagination configuration settings.
 
-    - **`provider.results.pagination.parameter`** *string* - *optional*
-        *Default value*: `page`
+- **`provider.results.pagination.parameter`** *string* - *optional*
+    *Default value*: `page`
 
-        Specifies the parameter of the current page.
+    Specifies the parameter of the current page.
 
-        Example: `/search?q=lorem&page=2`.
-    
-    - **`provider.results.pagination.per_page`** *integer* - *optional*
-        *Default value*: `10`
+    Example: `/search?q=lorem&page=2`.
 
-        Specifies the number of item shown per page.
+- **`provider.results.pagination.per_page`** *integer* - *optional*
+    *Default value*: `10`
+
+    Specifies the number of item shown per page.
 
 - **`provider.results.highlight`** *string* - *optional*
     *Default value*: `null`
