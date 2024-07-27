@@ -24,7 +24,7 @@ Create and/or modify your `search/results.html.twig` file.
 
 {% block body %}
 {% for item in search_results() %}
-{{ search_item_entity( item ) }}
+{{ search_set_item( item ) }}
 <article>
     <a href="{{ search_item_url() }}">{{ search_item_title() }}</a>
     <p>{{ search_item_description() }}</p>

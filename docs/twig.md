@@ -60,23 +60,32 @@
 
 ## Items
 
-- `search_item_entity()`
+- `search_set_item()`
+    Set item / entity has entity reference
 
 - `search_item_url()`
+    Return the absolute URL of the item
 
 - `search_item_path()`
+    Return the relative path of the item
 
 - `search_item_class()`
+    Return the entity classname
 
 - `search_item_alias()`
+    Return the entity alias
 
 - `search_item_title()`
+    Return the title of the entity
 
 - `search_item_description()`
+    Return the description of the entity
 
 - `search_item_illustration()`
+    Return the illustration of the entity
 
 - `search_item_template()`
+    Return the template path of the item
 
 ## Pagination
 

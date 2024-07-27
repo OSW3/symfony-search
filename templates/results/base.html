@@ -64,7 +64,7 @@
 
     {# "item" represent an entry of an entity #}
     {% for item in search_results() %}
-    {{ search_item_entity(item) }}
+    {{ search_set_item(item) }}
         <twig:Search:Item :entity="item" />
     {% endfor %}
 

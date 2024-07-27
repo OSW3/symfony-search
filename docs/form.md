@@ -19,21 +19,25 @@
 ### Parameters
 
 - `class` *string* - *optional*
+
     *Default value*: `null`
 
     Specifies your custom CSS class attribute.
 
 - `id` *string* - *optional*
+
     *Default value*: `null`
 
     Specifies your custom ID attribute.
 
 - `placeholder` *string* - *optional*
+
     *Default value*: `Search for something`
 
     Specifies your custom Placeholder attribute.
 
 - `label` *string* - *optional*
+
     *Default value*: `search`
 
     Specifies your the text label of the submit button.
