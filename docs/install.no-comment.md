@@ -8,11 +8,9 @@ Step by step install, no comment.
 composer require osw3/symfony-search
 ```
 
-## Step 1.b - Edit the line `"osw3/symfony-search"` (optional)
+## Step 1.b - Edit the line `"osw3/symfony-search"` of `composer.json` (optional)
 
 ```json 
-// Composer.json
-
 {
     "require": {
         "osw3/symfony-search": "*",
@@ -59,18 +57,17 @@ _search:
 # config/packages/search.yaml
 
 search:
-
     main:
         entities: 
-            App\Entity\Book: # Define the entities on which the search is applied
+            App\Entity\Book:
                 route: 
-                    name: app_book_show # Set the route to display the details of an entity
+                    name: app_book_show
                 criteria:
-                    title: # Define the properties on which the search is applied
-                        match: like # Define how the search is applied on the property
+                    title:
+                        match: like
 ```
 
-## Step xxx - Add the Search Component to your template
+## Step 6 - Add the Search Component to your template
 
 ```twig
 <twig:Search />
