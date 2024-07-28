@@ -1,48 +1,59 @@
 # Search form 
 
-## 2 ways to render the Search form
+## Render the default form
 
-### Method 1 - Render the search form by Twig function
+### Method 1 - Render the search form by Twig component
+
+```twig 
+<twig:Search id="my-custom-id" class="my-custom-class" placeholder="Search for something" label="search" />
+```
+
+### Method 2 - Render the search form by Twig function
 
 ```twig 
 {{ search_form([
-    class: "my-custom-class"
+    id: "my-custom-id",
+    class: "my-custom-class",
+    placeholder: "Search for something",
+    label: "search"
 ]) }}
-```
-
-### Method 2 - Render the search form by Twig component
-
-```twig 
-<twig:Search class="my-custom-class" />
 ```
 
 ### Parameters
 
-- `class` *string* - *optional*
+#### id
 
-    *Default value*: `null`
+Specifies your custom ID attribute.
 
-    Specifies your custom CSS class attribute.
+- Type: `string`
+- Default: `null`
+- `optional`
 
-- `id` *string* - *optional*
+#### class
 
-    *Default value*: `null`
+Specifies your custom CSS class attribute.
 
-    Specifies your custom ID attribute.
+- Type: `string`
+- Default: `null`
+- `optional`
 
-- `placeholder` *string* - *optional*
+#### placeholder
 
-    *Default value*: `Search for something`
+Specifies your custom Placeholder attribute.
 
-    Specifies your custom Placeholder attribute.
+- Type: `string`
+- Default: `Search for something`
+- `optional`
 
-- `label` *string* - *optional*
+#### label
 
-    *Default value*: `search`
+Specifies your the text label of the submit button.
 
-    Specifies your the text label of the submit button.
+- Type: `string`
+- Default: `search`
+- `optional`
 
-## Use your own customized Search form
+## Customized your Search form
 
 ### Step 1 - Create the template file
 
