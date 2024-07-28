@@ -15,11 +15,10 @@ Add search to your app pages.
 - x [The Twig functions and components](./docs/twig.md)
 - x [The services](./docs/services.md)
 
-## How to install
 
-### Step 1 - Download the Bundle
+## Step 1 - Install the Bundle
 
-#### Step 1.1. - Download with composer
+### Step 1.1. - Download with composer
 
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
@@ -28,7 +27,7 @@ following command to download the latest stable version of this bundle:
 composer require osw3/symfony-search
 ```
 
-#### Step 1.2. - (optional) Prepare composer for next updates
+### Step 1.2. - (optional) Prepare composer for next updates
 
 Edit the line `"osw3/symfony-search"` on your `composer.json`
 
@@ -40,7 +39,7 @@ Edit the line `"osw3/symfony-search"` on your `composer.json`
 }
 ```
 
-### Step 2 - Enable the Bundle
+## Step 2 - Enable the Bundle
 
 Then, enable the bundle by adding it to the list of registered bundles
 in the `config/bundles.php` file of your project:
@@ -54,7 +53,7 @@ return [
 ];
 ```
 
-### Step 3 - Expose the Bundle to Twig components
+## Step 3 - Expose the Bundle to Twig components
 
 ```yaml
 twig_component:
@@ -63,7 +62,7 @@ twig_component:
         OSW3\Search\Components\: '@Search/'
 ```
 
-## How to configure
+## Step 4 - Configure
 
 - Config [sample](./docs/config.md#config-sample) and [properties](./docs/config.md#config-properties)
 
@@ -73,17 +72,19 @@ Add a minimum configuration to the `config/packages/search.yaml`.
 search:
     main:
         entities: 
-            App\Entity\Book: # Define the entities on which the search is applied
+            # Define the entities on which the search is applied
+            App\Entity\Book: 
                 route: 
-                    name: app_book_show # Set the route to display the details of an entity
+                    # Set the route to display the details of an entity
+                    name: app_book_show 
                 criteria:
-                    title: # Define the properties on which the search is applied
-                        match: like # Define how the search is applied on the property
+                    # Define the properties on which the search is applied
+                    title: 
+                        # Define how the search is applied on the property
+                        match: like 
 ```
 
-## How to use
-
-### Step 1 - Add the search router to your project
+## Step 5 - Enable the search router
 
 Link the router of the bundle to your `config/routes.yaml` file.
 
@@ -94,7 +95,7 @@ _search:
     prefix:   /search
 ```
 
-### Step 2 - Add the twig component in your template.
+## Step 6 - Add the twig component in your template.
 
 ```twig
 <twig:Search />
