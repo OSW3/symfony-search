@@ -4,10 +4,13 @@ Add search to your app pages.
 
 1. [Quick install](./docs/01-quick-install.md) (no-comment)
 2. The configuration
-    - [A minimalist example](./docs//02.A-minimalist-configuration.md)
-    - [A full example](./docs/02.B-full-cofiguration.md)
-    - [Properties reference](./docs/02.C-configuration-properties.md)
-3. [The search form](./docs/03-form.md)
+    - [A minimalist example](./docs/02.1-minimalist-configuration.md)
+    - [A full example](./docs/02.2-full-cofiguration.md)
+    - [Properties reference](./docs/02.3-configuration-properties.md)
+3. The search form
+    - [Use default search form](./docs/03.1-search-form-default.md)
+    - [Customize search form](./docs/03.2-search-form-custom.md)
+    
 - x [The results](./docs/results.md)
     - x [The controller](./docs/controller.md)
     - x [The items](./docs/item.md)
