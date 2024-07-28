@@ -51,7 +51,7 @@ class SearchController extends AbstractController
         /// --
 
         $results = $this->queryService->fetch();
-        dump( $results );
+        // dump( $results );
 
 
         /// Rendering

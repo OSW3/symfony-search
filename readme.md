@@ -3,16 +3,20 @@
 Add search to your app pages.
 
 1. [Quick install](./docs/01-quick-install.md) (no-comment)
-2. The configuration
+2. Configuration
     - [A minimalist example](./docs/02.1-minimalist-configuration.md)
     - [A full example](./docs/02.2-full-cofiguration.md)
     - [Properties reference](./docs/02.3-configuration-properties.md)
-3. The search form
+3. Search form
     - [Use default search form](./docs/03.1-search-form-default.md)
     - [Customize search form](./docs/03.2-search-form-custom.md)
-    
+4. The search request
+    - [Use the default route and controller](./docs/04.1-route-controller-default.md)
+    - [Customize route and/or controller](./docs//04.2-route-controller-custom.md)
+5. Results
+    - 
+
 - x [The results](./docs/results.md)
-    - x [The controller](./docs/controller.md)
     - x [The items](./docs/item.md)
     - x [The pagination](./docs/pagination.md)
 - x [The Twig functions and components](./docs/twig.md)
