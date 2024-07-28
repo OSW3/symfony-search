@@ -2,8 +2,11 @@
 
 Add search to your app pages.
 
-1. [Quick install (no-comment)](./docs/install.no-comment.md)
-2. [The configuration](./docs/config.md)
+1. [Quick install](./docs/01-quick-install.md) (no-comment)
+2. The configuration
+    - [A minimalist example](./docs//02.A-minimalist-configuration.md)
+    - [A full example](./docs/02.B-full-cofiguration.md)
+    - [Properties reference](./docs/02.C-configuration-properties.md)
 - [The search form](./docs/form.md)
 - x [The results](./docs/results.md)
     - x [The controller](./docs/controller.md)
