@@ -10,17 +10,13 @@ Add search to your app pages.
 3. Search form
     - [Use default search form](./docs/03.1-search-form-default.md)
     - [Customize search form](./docs/03.2-search-form-custom.md)
-4. The search request
+4. Fetch the query results
     - [Use the default route and controller](./docs/04.1-route-controller-default.md)
     - [Customize route and/or controller](./docs//04.2-route-controller-custom.md)
-5. Results
-    - 
+5. Show results in Twig template
+    - [Use the bundle's Twig template](./docs/05.1-template-default.md)
+    - [Customize your Twig template](./docs/05.2-template-custom.md)
 
-- x [The results](./docs/results.md)
-    - x [The items](./docs/item.md)
-    - x [The pagination](./docs/pagination.md)
-- x [The Twig functions and components](./docs/twig.md)
-- x [The services](./docs/services.md)
 
 ## Install & Config
 
