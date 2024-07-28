@@ -2,9 +2,13 @@
 
 ## How to debug your config
 
+The following command allows you to see the structure of the bundle configuration.
+
 ```shell
 bin/console config:dump-reference SearchBundle
 ```
+
+The following command allows you to see the status of your configuration.
 
 ```shell
 bin/console debug:config SearchBundle

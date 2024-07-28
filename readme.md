@@ -37,6 +37,18 @@ return [
 ];
 ```
 
+#### (optional) Prepare composer for next updates
+
+Edit the line `"osw3/symfony-search"` on your `composer.json`
+
+```json 
+{
+    "require": {
+        "osw3/symfony-search": "*",
+    },
+}
+```
+
 ### Step 3: Expose the Bundle to Twig components
 
 ```yaml
@@ -49,6 +61,20 @@ twig_component:
 ## How to configure
 
 - Config [sample](./docs/config.md#config-sample) and [properties](./docs/config.md#config-properties)
+
+Add a minimum configuration to the `config/packages/search.yaml`.
+
+```yaml 
+search:
+    main:
+        entities: 
+            App\Entity\Book: # Define the entities on which the search is applied
+                route: 
+                    name: app_book_show # Set the route to display the details of an entity
+                criteria:
+                    title: # Define the properties on which the search is applied
+                        match: like # Define how the search is applied on the property
+```
 
 ## How to use
 
