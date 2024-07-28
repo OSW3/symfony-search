@@ -2,7 +2,8 @@
 
 Add search to your app pages.
 
-- [The configuration](./docs/config.md)
+1. [Quick install (no-comment)](./docs/install.no-comment.md)
+2. [The configuration](./docs/config.md)
 - [The search form](./docs/form.md)
 - x [The results](./docs/results.md)
     - x [The controller](./docs/controller.md)

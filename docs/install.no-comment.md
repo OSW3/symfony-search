@@ -1,6 +1,6 @@
 # Install the bundle 
 
-Step by step install, no comment.
+Step by step. No comment.
 
 ## Step 1.a - Download the Bundle
 
