@@ -14,7 +14,9 @@ Add search to your app pages.
 
 ## How to install
 
-### Step 1: Download the Bundle
+### Step 1 - Download the Bundle
+
+#### Step 1.1. - Download with composer
 
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
@@ -23,7 +25,19 @@ following command to download the latest stable version of this bundle:
 composer require osw3/symfony-search
 ```
 
-### Step 2: Enable the Bundle
+#### Step 1.2. - (optional) Prepare composer for next updates
+
+Edit the line `"osw3/symfony-search"` on your `composer.json`
+
+```json 
+{
+    "require": {
+        "osw3/symfony-search": "*",
+    },
+}
+```
+
+### Step 2 - Enable the Bundle
 
 Then, enable the bundle by adding it to the list of registered bundles
 in the `config/bundles.php` file of your project:
@@ -37,19 +51,7 @@ return [
 ];
 ```
 
-#### (optional) Prepare composer for next updates
-
-Edit the line `"osw3/symfony-search"` on your `composer.json`
-
-```json 
-{
-    "require": {
-        "osw3/symfony-search": "*",
-    },
-}
-```
-
-### Step 3: Expose the Bundle to Twig components
+### Step 3 - Expose the Bundle to Twig components
 
 ```yaml
 twig_component:
