@@ -7,7 +7,7 @@ Add search to your app pages.
     - [A minimalist example](./docs//02.A-minimalist-configuration.md)
     - [A full example](./docs/02.B-full-cofiguration.md)
     - [Properties reference](./docs/02.C-configuration-properties.md)
-- [The search form](./docs/form.md)
+3. [The search form](./docs/03-form.md)
 - x [The results](./docs/results.md)
     - x [The controller](./docs/controller.md)
     - x [The items](./docs/item.md)
