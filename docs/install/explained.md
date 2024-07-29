@@ -71,8 +71,6 @@ _search:
 
 ## Step 5 - Add a quick config
 
-- Config [sample](./docs/config.md#config-sample) and [properties](./docs/config.md#config-properties)
-
 Add a minimum configuration to the `config/packages/search.yaml`.
 
 ```yaml 
@@ -90,6 +88,9 @@ search:
                         # Define how the search is applied on the property
                         match: like 
 ```
+
+- [Full configuration example](./../configuration/full.md)
+- [Configuration references](./../references/configuration.md)
 
 <br>
 

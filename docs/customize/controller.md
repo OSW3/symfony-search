@@ -1,5 +1,7 @@
 # Customize route and/or controller
 
+<br>
+
 ## Step 1 - Create your custom controller
 
 ```shell
@@ -30,6 +32,8 @@ class CustomSearchController extends AbstractController
 
 > NOTE: The route name is `app_custom_search`
 
+<br>
+
 ## Step 2 - Set the route
 
 Set your new route has the search request route in the `config/packages/search.yaml`.
@@ -40,6 +44,8 @@ search:
         request:
             route: app_custom_search
 ```
+
+<br>
 
 ## Step 3 - Fetch the query results
 
@@ -68,3 +74,5 @@ class CustomSearchController extends AbstractController
 ```
 
 ## Step 4 - Display the results
+
+<br>

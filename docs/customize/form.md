@@ -1,10 +1,14 @@
 # Customize the Search form 
 
+<br>
+
 ## Step 1 - Create the template file
 
 Create your twig template in the `templates` directory of your project.
 
 e.g.: `templates/search/form.html.twig`
+
+<br>
 
 ## Step 2 - Specifies the template location
 
@@ -17,6 +21,8 @@ search:
             template: 'search/form.html.twig'
 ```
 
+<br>
+
 ## Step 3 - Create your form
 
 ### Method 1
@@ -27,6 +33,8 @@ search:
     <button type="submit">{{ label|default('search') }}</button>
 </form>
 ```
+
+<br>
 
 ### Method 2
 

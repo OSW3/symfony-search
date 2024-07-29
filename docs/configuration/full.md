@@ -27,7 +27,7 @@ In this example, we assume that you have created entities `App\Entity\Book` and 
 search:
     first_provider:
         form:
-            template: '@Search/form.html.twig'
+            template: '@Search/form.html'
         request:
             route: search
             method: GET
@@ -41,7 +41,6 @@ search:
         entities: 
             App\Entity\Book:
                 alias: book 
-                serialize: ['book']
                 template: "@Search/results/item.html.twig"
                 route: 
                     name: app_book_show
@@ -56,7 +55,6 @@ search:
                         match: like
             App\Entity\Product:
                 alias: product 
-                serialize: ['product']
                 template: "@Search/results/item.html"
                 route: 
                     name: app_product_show

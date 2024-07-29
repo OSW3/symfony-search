@@ -210,10 +210,21 @@ class QueryService
      */
     private function sortByID(array $array, int $direction=SORT_ASC): array 
     {
-        $ids = array_map(fn($item) => $item->getId(), $array);
-        array_multisort($ids, $direction, $array);
+        $ids = [];
+        $validItems = [];
 
-        return $array;
+        foreach ($array as $item) 
+        {
+            if (method_exists($item, 'getId')) 
+            {
+                $ids[] = $item->getId();
+                $validItems[] = $item;
+            }
+        }
+
+        array_multisort($ids, $direction, $validItems);
+
+        return $validItems;
     }
 
     /**
@@ -227,21 +238,27 @@ class QueryService
     {
         $options = $this->providerService->getOptions();
         $titles = [];
-        
-        foreach ($array as $item)
+        $validItems = [];
+
+        foreach ($array as $item) 
         {
             $class = get_class($item);
             $property = $options['entities'][$class]['title'];
 
-            if (property_exists($class, $property))
+            if (property_exists($class, $property)) 
             {
-                $getter = "get".ucfirst($property);
-                $titles[] = $item->$getter();
+                $getter = "get" . ucfirst($property);
+
+                if (method_exists($item, $getter)) 
+                {
+                    $titles[] = $item->$getter();
+                    $validItems[] = $item;
+                }
             }
         }
 
-        array_multisort($titles, $direction, $array);
+        array_multisort($titles, $direction, $validItems);
 
-        return $array;
+        return $validItems;
     }
 }

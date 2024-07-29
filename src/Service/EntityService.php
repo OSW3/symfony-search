@@ -1,6 +1,8 @@
 <?php 
 namespace OSW3\Search\Service;
 
+use OSW3\Search\Service\ProviderService;
+
 class EntityService 
 {
     private array $params;
