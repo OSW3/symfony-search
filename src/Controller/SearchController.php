@@ -1,16 +1,18 @@
 <?php 
 namespace OSW3\Search\Controller;
 
+use OSW3\Search\Service\FormService;
+use OSW3\Search\Service\ItemService;
+use OSW3\Search\Service\QueryService;
 use OSW3\Search\Service\EntityService;
+use Symfony\Component\Filesystem\Path;
 use OSW3\Search\Service\ResultsService;
 use OSW3\Search\Service\ProviderService;
-use OSW3\Search\Service\QueryService;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Path;
 
 class SearchController extends AbstractController
 {
@@ -19,7 +21,9 @@ class SearchController extends AbstractController
         private ProviderService $providerService,
         private QueryService $queryService,
         private ResultsService $resultsService,
-        private EntityService $entityService
+        private EntityService $entityService,
+
+        private ItemService $itemService
     ){}
 
     #[Route('', name: 'search', methods: ['GET','POST'])]
@@ -30,6 +34,8 @@ class SearchController extends AbstractController
             throw $this->createNotFoundException('invalid search parameter name.');
             return new Response("",404);
         }
+
+
 
         /// Template
         /// --
@@ -44,14 +50,19 @@ class SearchController extends AbstractController
 
 
         // Exclude some entities
-        // $this->entityService->exclude("App\Entity\Product");
+        $this->entityService->exclude("App\Entity\Product");
 
 
         /// Fetch
         /// --
 
-        $results = $this->queryService->fetch();
-        // dump( $results );
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    dump($this->itemService->getRouteParams());
+
+    // ...
+}
 
 
         /// Rendering

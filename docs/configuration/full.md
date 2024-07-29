@@ -27,13 +27,13 @@ In this example, we assume that you have created entities `App\Entity\Book` and 
 search:
     first_provider:
         form:
-            template: '@Search/form.html'
+            template: "@Search/form/base.html"
         request:
             route: search
             method: GET
             parameter: q
         results:
-            template: '@Search/results.html.twig'
+            template: "@Search/results/base.html"
             pagination:
                 parameter: page
                 per_page: 10
@@ -41,7 +41,7 @@ search:
         entities: 
             App\Entity\Book:
                 alias: book 
-                template: "@Search/results/item.html.twig"
+                template: "@Search/results/item.html"
                 route: 
                     name: app_book_show
                     parameters: ['id']

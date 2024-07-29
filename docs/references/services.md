@@ -20,35 +20,93 @@ public function __construct(
 
 ### EntityService Methods
 
-#### getAll
+#### getAll()
 
 `getAll(): array`
 
-Return the part "entities" of the `search.yaml` config
+Returns the list of names of the entities on which the search applies.
+
+```php
+$this->entityService->getAll();
+// [
+//   0 => "App\Entity\Book"
+//   1 => "App\Entity\Product"
+// ]
+```
 
 <br>
 
 #### exclude
 
+Adding entities to the exclusion list
+
 `exclude(string $entity): static`
 
-Add entity to the exclusion list
+```php
+// Exclude some entities
+$this->entityService->exclude("App\Entity\Product");
+
+// The query will not apply to the entity App\Entity\Product
+$results = $this->queryService->fetch();
+```
+
+Using exclusion in a conditional closure
+
+```php
+if ($exclude_products) {
+    $this->entityService->exclude("App\Entity\Product");
+}
+
+$this->entityService->queryable();
+// [
+//   0 => "App\Entity\Book"
+// ]
+```
 
 <br>
 
 #### queryable
 
+Return the list of queryable entities.
+This is the list of entities on which the search query will apply
+
 `queryable(): array`
 
-Return the list of queryable entities
+
+```php
+$this->entityService->queryable();
+// [
+//   0 => "App\Entity\Book"
+//   1 => "App\Entity\Product"
+// ]
+
+$this->entityService->exclude("App\Entity\Product");
+$this->entityService->queryable();
+// [
+//   0 => "App\Entity\Book"
+// ]
+```
 
 <br>
 
 #### getOptions
 
+Returns the configuration of a specific entity
+
 `getOptions(string $entity): array`
 
-Return options for a specific entity
+```php 
+$this->entityService->getOptions("App\Entity\Book") ); 
+// [
+//   "route" => [ ... ]
+//   "criteria" =>  [ ... ]
+//   "alias" => "book"
+//   "template" => "@Search/results/item.html"
+//   "title" => "title"
+//   "description" => "description"
+//   "illustration" => false
+// ]
+```
 
 <br>
 
@@ -72,7 +130,14 @@ public function __construct(
 
 #### getTemplate
 
-`getTemplate()`
+Returns the path of the form template.
+
+`getTemplate(): string`
+
+```php 
+$this->formService->getTemplate();
+// "search/form.html.twig"
+```
 
 <br>
 
@@ -96,49 +161,109 @@ public function __construct(
 
 #### setEntity
 
-`setEntity()`
+Initialize the context of the entity being iterated
 
-<br>
+`setEntity(): static`
 
-#### getEntity
-
-`getEntity()`
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    // ...
+}
+```
 
 <br>
 
 #### getClass
 
-`getClass()`
+Returns the name of the entity class of the current context
+
+`getClass(): string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getClass();
+    // App\Entity\Book
+}
+```
 
 <br>
 
 #### getAlias
 
-`getAlias()`
+Returns the alias of the current entity
+
+`getAlias(): string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getAlias();
+    // book
+}
+```
 
 <br>
 
 #### getTemplate
 
-`getTemplate()`
+Returns the template path of the current entity
 
-<br>
+`getTemplate(): string`
 
-#### getOptions
-
-`getOptions()`
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getTemplate();
+    // Search/results/item.html
+}
+```
 
 <br>
 
 #### getRoute
 
-`getRoute()`
+Returns the name of the route of the current entity.
+
+`getRoute(): string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getRoute();
+    // app_book_show
+}
+```
 
 <br>
 
 #### getRouteParams
 
-`getRouteParams()`
+Returns the list of parameter names needed to generate the url
+
+`getRouteParams(): array`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getRouteParams();
+    // [
+    //   0 => "id"
+    // ]
+}
+```
 
 <br>
 

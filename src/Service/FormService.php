@@ -14,7 +14,7 @@ class FormService
     }
 
     /**
-     * Return the path of the fom template
+     * Returns the path of the form template
      *
      * @return string
      */

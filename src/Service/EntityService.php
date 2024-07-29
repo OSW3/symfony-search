@@ -15,7 +15,7 @@ class EntityService
     }
 
     /**
-     * Return the "entities" property of config
+     * Returns the list of names of the entities on which the search applies
      *
      * @return array
      */
@@ -25,7 +25,7 @@ class EntityService
     }
 
     /**
-     * Add entity to the exclusion list
+     * Adding entities to the exclusion list
      *
      * @param string $entity
      * @return static
@@ -38,7 +38,8 @@ class EntityService
     }
 
     /**
-     * Return the list of queryable entities
+     * Return the list of queryable entities.
+     * This is the list of entities on which the search query will apply
      *
      * @return array
      */
@@ -48,7 +49,7 @@ class EntityService
     }
 
     /**
-     * Return options for a specific entity
+     * Returns the configuration of a specific entity
      *
      * @param string $entity
      * @return array

@@ -11,12 +11,19 @@ class ItemService
     private string $class;
 
     public function __construct(
+        private EntityService $entityService,
         private ProviderService $providerService,
         private UrlGeneratorInterface $urlGenerator,
     ){
         $this->params = $this->providerService->getOptions();
     }
 
+    /**
+     * Initialize the context of the entity being iterated
+     *
+     * @param [type] $entity
+     * @return static
+     */
     public function setEntity($entity): static 
     {
         $this->entity = $entity;
@@ -25,54 +32,70 @@ class ItemService
         return $this;
     }
 
+    /**
+     * Returns the entity of the current context
+     *
+     * @return mixed
+     */
     public function getEntity(): mixed 
     {
         return $this->entity;
     }
 
+    /**
+     * Returns the name of the entity class of the current context
+     *
+     * @return string
+     */
     public function getClass(): string 
     {
         return $this->class;
     }
 
+    /**
+     * Returns the alias of the current entity
+     *
+     * @return string
+     */
     public function getAlias(): string 
     {
-        $options = $this->getOptions();
+        $options = $this->entityService->getOptions($this->class);
 
         return $options['alias'];
     }
 
+    /**
+     * Returns the template path of the current entity
+     *
+     * @return string
+     */
     public function getTemplate(): string 
     {
-        $options = $this->getOptions();
+        $options = $this->entityService->getOptions($this->class);
 
         return $options['template'];
     }
 
     /**
-     * Return options for an entity
-     *
-     * @return array
-     */
-    public function getOptions(): array
-    {
-        return $this->params['entities'][$this->class];
-    }
-
-    /**
-     * Return the name of the route of the entity found
+     * Returns the name of the route of the current entity
      *
      * @return string
      */
     public function getRoute(): string 
     {
-        $options = $this->getOptions();
+        $options = $this->entityService->getOptions($this->class);
 
         return $options['route']['name'];
     }
+
+    /**
+     * Returns the list of parameter names needed to generate the url
+     *
+     * @return array
+     */
     public function getRouteParams(): array 
     {
-        $options = $this->getOptions();
+        $options = $this->entityService->getOptions($this->class);
 
         return $options['route']['parameters'];
     }
@@ -90,8 +113,6 @@ class ItemService
         }
 
         return $this->urlGenerator->generate($route, $params, $class);
-
-        return "xxx";
     }
 
     public function getPath(): string 
@@ -116,7 +137,7 @@ class ItemService
 
     private function getProperty(string $propertyName): ?string
     {
-        $options  = $this->getOptions();
+        $options  = $this->entityService->getOptions($this->class);
         $class    = $this->getClass();
         $entity   = $this->getEntity();
         $property = $options[$propertyName];
