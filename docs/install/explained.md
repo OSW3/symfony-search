@@ -1,8 +1,8 @@
-# Install the bundle 
+# Install (process explained)
 
-## Step 1 - Install the Bundle
+## Step 1 - Download with composer
 
-### Step 1.1. - Download with composer
+### Step 1.a - Download the Bundle
 
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
@@ -11,7 +11,9 @@ following command to download the latest stable version of this bundle:
 composer require osw3/symfony-search
 ```
 
-### Step 1.2. - (optional) Prepare composer for next updates
+<br>
+
+### Step 1.b - Edit the line `"osw3/symfony-search"` of `composer.json` (optional)
 
 Edit the line `"osw3/symfony-search"` on your `composer.json`
 
@@ -22,6 +24,8 @@ Edit the line `"osw3/symfony-search"` on your `composer.json`
     },
 }
 ```
+
+<br>
 
 ## Step 2 - Enable the Bundle
 
@@ -37,6 +41,8 @@ return [
 ];
 ```
 
+<br>
+
 ## Step 3 - Expose the Bundle to Twig components
 
 ```yaml
@@ -46,7 +52,22 @@ twig_component:
         OSW3\Search\Components\: '@Search/'
 ```
 
-## Step 4 - Configure
+<br>
+
+## Step 4 - Enable the bundle router
+
+Link the router of the bundle to your `config/routes.yaml` file.
+
+```yaml
+_search:
+    resource: '@SearchBundle/Controller/'
+    type:     attribute
+    prefix:   /search
+```
+
+<br>
+
+## Step 5 - Add a quick config
 
 - Config [sample](./docs/config.md#config-sample) and [properties](./docs/config.md#config-properties)
 
@@ -68,18 +89,9 @@ search:
                         match: like 
 ```
 
-## Step 5 - Enable the search router
+<br>
 
-Link the router of the bundle to your `config/routes.yaml` file.
-
-```yaml
-_search:
-    resource: '@SearchBundle/Controller/'
-    type:     attribute
-    prefix:   /search
-```
-
-## Step 6 - Add the twig component in your template.
+## Step 6 - Add the Search Component to your template
 
 ```twig
 <twig:Search />
