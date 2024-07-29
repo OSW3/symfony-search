@@ -100,6 +100,12 @@ class ItemService
         return $options['route']['parameters'];
     }
 
+    /**
+     * Returns the absolute or relative url of the current entity.
+     *
+     * @param boolean $absolute
+     * @return string
+     */
     public function getUrl(bool $absolute=true): string 
     {
         $route  = $this->getRoute();
@@ -115,21 +121,41 @@ class ItemService
         return $this->urlGenerator->generate($route, $params, $class);
     }
 
+    /**
+     * Returns the relative path of the current entity.
+     *
+     * @return string
+     */
     public function getPath(): string 
     {
         return $this->getUrl(false);
     }
 
+    /**
+     * Returns the "title" of the current entity
+     *
+     * @return string|null
+     */
     public function getTitle(): ?string 
     {
         return $this->getProperty('title');
     }
     
+    /**
+     * Returns the "description" of the current entity
+     *
+     * @return string|null
+     */
     public function getDescription(): ?string 
     {
         return $this->getProperty('description');
     }
     
+    /**
+     * Returns the "illustration" of the current entity
+     *
+     * @return string|null
+     */
     public function getIllustration(): ?string 
     {
         return $this->getProperty('illustration');

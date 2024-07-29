@@ -4,7 +4,7 @@
 
 ## EntityService
 
-### Autowire rhe EntityService
+### Autowire the EntityService
 
 ```php
 use OSW3\Search\Service\EntityService;
@@ -109,10 +109,11 @@ $this->entityService->getOptions("App\Entity\Book") );
 ```
 
 <br>
+<br>
 
 ## FormService
 
-### Autowire rhe FormService
+### Autowire the FormService
 
 ```php
 use OSW3\Search\Service\FormService;
@@ -140,10 +141,11 @@ $this->formService->getTemplate();
 ```
 
 <br>
+<br>
 
 ## ItemService
 
-### Autowire rhe ItemService
+### Autowire the ItemService
 
 ```php
 use OSW3\Search\Service\ItemService;
@@ -269,43 +271,100 @@ foreach ($results as $item) {
 
 #### getUrl
 
-`getUrl()`
+Returns the absolute or relative url of the current entity.
+
+`getUrl(bool $absolute=true): string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getUrl();
+    // site.com/book/42
+    
+    $this->itemService->getUrl(false);
+    // /book/42
+}
+```
 
 <br>
 
 #### getPath
 
-`getPath()`
+Returns the relative path of the current entity.
+
+Alias of `getUrl(false)`
+
+`getPath(): string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getPath(false);
+    // /book/42
+}
+```
 
 <br>
 
 #### getTitle
 
-`getTitle()`
+Returns the "title" of the current entity
+
+`getTitle(): ?string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getTitle();
+}
+```
 
 <br>
 
 #### getDescription
 
-`getDescription()`
+Returns the "description" of the current entity
+
+`getDescription(): ?string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getDescription();
+}
+```
 
 <br>
 
 #### getIllustration
 
-`getIllustration()`
+Returns the "illustration" of the current entity
+
+`getIllustration(): ?string`
+
+```php 
+$results = $this->queryService->fetch();
+foreach ($results as $item) {
+    $this->itemService->setEntity($item);
+    
+    $this->itemService->getIllustration();
+}
+```
 
 <br>
-
-#### getProperty
-
-`getProperty()`
-
 <br>
 
 ## PaginationService
 
-### Autowire rhe PaginationService
+### Autowire the PaginationService
 
 ```php
 use OSW3\Search\Service\PaginationService;
@@ -378,7 +437,7 @@ public function __construct(
 
 ## ProviderService
 
-### Autowire rhe ProviderService
+### Autowire the ProviderService
 
 ```php
 use OSW3\Search\Service\ProviderService;
@@ -427,7 +486,7 @@ public function __construct(
 
 ## QueryService
 
-### Autowire rhe QueryService
+### Autowire the QueryService
 
 ```php
 use OSW3\Search\Service\QueryService;
@@ -475,7 +534,7 @@ public function __construct(
 
 ## RequestService
 
-### Autowire rhe RequestService
+### Autowire the RequestService
 
 ```php
 use OSW3\Search\Service\RequestService;
@@ -508,7 +567,7 @@ public function __construct(
 
 ## ResultsService
 
-### Autowire rhe ResultsService
+### Autowire the ResultsService
 
 ```php
 use OSW3\Search\Service\ResultsService;
