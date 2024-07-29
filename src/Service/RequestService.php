@@ -18,6 +18,16 @@ class RequestService
     }
 
     /**
+     * Returns the name of the request route
+     *
+     * @return string
+     */
+    public function getRoute(): string
+    {
+        return $this->params['request']['route'];
+    }
+
+    /**
      * Returns the request method
      *
      * @return string

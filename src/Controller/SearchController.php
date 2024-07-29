@@ -23,7 +23,7 @@ class SearchController extends AbstractController
         private PaginationService $paginationService
     ){}
 
-    #[Route('', name: 'search', methods: ['GET','POST'])]
+    #[Route('', name: 'app_search', methods: ['GET','POST'])]
     public function fetch(): Response
     {
         if (!$provider = $this->providerService->guessProvider())

@@ -26,7 +26,7 @@ return static function($definition)
 
             ->scalarNode('route')
                 ->info('Specifies the route to execute the query and display the search results.')
-                ->defaultValue('search')
+                ->defaultValue('app_search')
             ->end()
 
             ->enumNode('method')

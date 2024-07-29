@@ -21,6 +21,7 @@ class PaginationService
 
     public function __construct(
         private ProviderService $providerService,
+        private RequestService $requestService,
         private RequestStack $requestStack,
         private UrlGeneratorInterface $urlGenerator,
     ){
@@ -67,12 +68,13 @@ class PaginationService
     public function getLinks(?string $id=null): null|string|array
     {
         $links = [];
+        $route = $this->requestService->getRoute();
         $current = $this->getPage();
 
         for ($i = 0; $i < $this->pages; $i++)
         {
             $page = $i+1;
-            $url  = $this->urlGenerator->generate('search', [
+            $url  = $this->urlGenerator->generate($route, [
                 $this->requestParam => $this->expression,
                 $this->pageParam    => $page
             ], UrlGenerator::ABSOLUTE_URL);

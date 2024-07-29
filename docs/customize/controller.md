@@ -1,4 +1,4 @@
-# Customize route and/or controller
+# Customize the Search controller 
 
 <br>
 

@@ -95,26 +95,18 @@ class ProviderService
      */
     public function guessProvider(): ?string
     {
-        if ($this->request->get('_route') !== "search") {
+        $routes = [];
+
+        foreach ($this->params as $provider => $options)
+        {
+            $routes[$options['request']['route']] = $provider;
+        }
+
+        if (!isset($routes[$this->request->get('_route')]))
+        {
             return null;
         }
-
-        // Get the query parameters
-        $queryParams = $this->request->query->all();
-        $queryParams = array_keys($queryParams);
-
-        // Get providers of the config
-        $providers = $this->getAll();
-
-        foreach ($providers as $provider)
-        {
-            $options = $this->params[$provider];
-
-            if (in_array($options['request']['parameter'], $queryParams)) {
-                return $provider;
-            }
-        }
-
-        return null;
+        
+        return $routes[$this->request->get('_route')];
     }
 }

@@ -29,7 +29,7 @@ search:
         form:
             template: "@Search/form/base.html"
         request:
-            route: search
+            route: app_search
             method: GET
             parameter: q
         results:
