@@ -1,4 +1,4 @@
-# Install the bundle 
+# Install (no-comment process)
 
 Step by step. No comment.
 
@@ -20,6 +20,8 @@ composer require osw3/symfony-search
 }
 ```
 
+<br>
+
 ## Step 2 - Enable the Bundle
 
 ```php
@@ -30,6 +32,8 @@ return [
     OSW3\Search\SearchBundle::class => ['all' => true],
 ];
 ```
+
+<br>
 
 ## Step 3 - Expose the Bundle to Twig components
 
@@ -42,6 +46,8 @@ twig_component:
         OSW3\Search\Components\: '@Search/'
 ```
 
+<br>
+
 ## Step 4 - Enable the bundle router
 
 ```yaml
@@ -52,6 +58,8 @@ _search:
     type:     attribute
     prefix:   /search
 ```
+
+<br>
 
 ## Step 5 - Add a quick config
 
@@ -68,6 +76,8 @@ search:
                     title:
                         match: like
 ```
+
+<br>
 
 ## Step 6 - Add the Search Component to your template
 
