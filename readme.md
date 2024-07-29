@@ -4,7 +4,7 @@ Add search to your app pages.
 
 - Installation
     - [Installation (no comment process)](./docs/install/no-comment.md)
-    - [Installation (process explained)](./docs/install/no-comment.md)
+    - [Installation (process explained)](./docs/install/explained.md)
 - Configuration
     - [Minimalist configuration example](./docs/configuration/minimalist.md)
     - [Full configuration example](./docs/configuration/full.md)
