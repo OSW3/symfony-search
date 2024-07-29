@@ -2,13 +2,15 @@
 
 Step by step. No comment.
 
-## Step 1.a - Download the Bundle
+## Step 1 - Download with composer
+
+### Step 1.a - Download the Bundle
 
 ```shell 
 composer require osw3/symfony-search
 ```
 
-## Step 1.b - Edit the line `"osw3/symfony-search"` of `composer.json` (optional)
+### Step 1.b - Edit the line `"osw3/symfony-search"` of `composer.json` (optional)
 
 ```json 
 {
