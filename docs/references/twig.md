@@ -4,7 +4,9 @@
 
 ## Providers
 
-### `search_providers(string provider): void`
+### search_providers
+
+`search_providers(string provider): void`
 
 Return an array with providers names
 
