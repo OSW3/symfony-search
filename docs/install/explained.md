@@ -1,5 +1,7 @@
 # Install (process explained)
 
+<br>
+
 ## Step 1 - Download with composer
 
 ### Step 1.a - Download the Bundle

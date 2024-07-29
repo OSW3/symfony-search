@@ -1,4 +1,6 @@
-# A Minimalist Configuration example
+# Minimalist Configuration example
+
+<br>
 
 ## How to debug your config
 
@@ -14,6 +16,7 @@ bin/console config:dump-reference SearchBundle
 bin/console debug:config SearchBundle
 ```
 
+<br>
 
 ## Minimalist configuration example
 

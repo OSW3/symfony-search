@@ -1,4 +1,6 @@
-# A Full Configuration example
+# Full Configuration example
+
+<br>
 
 ## How to debug your config
 
@@ -13,6 +15,8 @@ bin/console config:dump-reference SearchBundle
 ```shell
 bin/console debug:config SearchBundle
 ```
+
+<br>
 
 
 ## Full configuration example
