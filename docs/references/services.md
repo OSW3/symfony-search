@@ -137,7 +137,7 @@ Returns the path of the form template.
 
 ```php 
 $this->formService->getTemplate();
-// "search/form.html.twig"
+// "@Search/form/base.html"
 ```
 
 <br>
@@ -225,7 +225,7 @@ foreach ($results as $item) {
     $this->itemService->setEntity($item);
     
     $this->itemService->getTemplate();
-    // Search/results/item.html
+    // @Search/results/item.html
 }
 ```
 
@@ -382,55 +382,137 @@ public function __construct(
 
 #### getPage
 
-`getPage()`
+Returns the current page number
+
+`getPage(): int`
+
+```php 
+$this->paginationService->getPage();
+// 4
+```
 
 <br>
 
 #### getPages
 
-`getPages()`
+Returns the number of total pages
+
+`getPages(): int`
+
+```php 
+$this->paginationService->getPages();
+// 6
+```
 
 <br>
 
 #### getLinks
 
-`getLinks()`
+Returns pagination links
+
+`getLinks((?string $id=null): null|string|array`
+
+`$id`value can be `first`, `prev`, `next`, `last`
+
+```php 
+$this->paginationService->getLinks();
+// [
+//   0 => [
+//     "current" => false
+//     "url" => "http://site.com/search/?q=lor&page=1"
+//   ],
+//   1 => [
+//     "current" => false
+//     "url" => "http://site.com/search/?q=lor&page=2"
+//   ],
+//   2 => [
+//     "current" => false
+//     "url" => "http://site.com/search/?q=lor&page=3"
+//   ],
+//   3 => [
+//     "current" => true
+//     "url" => "http://site.com/search/?q=lor&page=4"
+//   ],
+//   4 => [
+//     "current" => false
+//     "url" => "http://site.com/search/?q=lor&page=5"
+//   ],
+//   5 => [
+//     "current" => false
+//     "url" => "http://site.com/search/?q=lor&page=6"
+//   ],
+// ]
+```
+
+```php 
+$this->paginationService->getLinks('first');
+// "http://site.com/search/?q=lor&page=1"
+```
 
 <br>
 
 #### getFirstLink
 
-`getFirstLink()`
+Returns the URL of the first page
+
+`getFirstLink(): string`
+
+```php 
+$this->paginationService->getFirstLink();
+// "http://site.com/search/?q=lor&page=1"
+```
 
 <br>
 
 #### getLastLink
 
-`getLastLink()`
+Returns the URL of the last page
+
+`getLastLink(): string`
+
+```php 
+$this->paginationService->getLastLink();
+// "http://site.com/search/?q=lor&page=6"
+```
 
 <br>
 
 #### getPrevLink
 
-`getPrevLink()`
+Returns the URL of the previous page
+
+`getPrevLink(): string`
+
+```php 
+$this->paginationService->getPrevLink();
+// "http://site.com/search/?q=lor&page=3"
+```
 
 <br>
 
 #### getNextLink
 
-`getNextLink()`
+Returns the URL of the next page
+
+`getNextLink(): string`
+
+```php 
+$this->paginationService->getNextLink();
+// "http://site.com/search/?q=lor&page=5"
+```
 
 <br>
 
 #### getPerPage
 
-`getPerPage()`
+Returns the number max of items PerPage
 
-<br>
+`getPerPage(): int`
 
-#### paginate
-
-`paginate()`
+```php 
+$this->paginationService->getPerPage();
+// 10
+```
 
 <br>
 
@@ -455,31 +537,65 @@ public function __construct(
 
 #### getAll
 
-`getAll()`
+Returns all providers names
+
+`getAll(): array`
+
+```php 
+$this->providerService->getAll();
+// [
+//   0 => "first_provider"
+//   1 => "seconde_provider"
+// ]
+```
 
 <br>
 
 #### setCurrent
 
-`setCurrent()`
+Set the context provider
+
+`setCurrent(string $name): static`
+
+```php 
+$this->providerService->setCurrent('second_provider');
+```
 
 <br>
 
 #### getCurrent
 
-`getCurrent()`
+Returns the name of the current context provider
+
+`getCurrent(): string`
+
+```php 
+$this->providerService->getCurrent();
+```
 
 <br>
 
 #### getOptions
 
-`getOptions()`
+Returns the configuration of a specific provider in `$provider` is not null
+
+`getOptions(?string $provider=null): array`
+
+```php 
+$this->providerService->getOptions();
+```
 
 <br>
 
 #### guessProvider
 
-`guessProvider()`
+Return the name of the current provider base on the request parameter
+
+`guessProvider(): null|string`
+
+```php 
+$this->providerService->guessProvider();
+```
 
 <br>
 
@@ -504,31 +620,63 @@ public function __construct(
 
 #### fetch
 
-`fetch()`
+Prepare , execute and return the results of the query
+
+`fetch(): array`
+
+```php 
+$this->queryService->fetch();
+```
+
+`fetch` is an alias of chained `$this->queryService->prepare()->execute()->getResults()`
 
 <br>
 
 #### prepare
 
-`prepare()`
+Prepare the SQL request
+
+`prepare(): static`
+
+```php 
+$this->queryService->prepare();
+```
 
 <br>
 
 #### execute
 
-`execute()`
+Execute the SQL requests
+
+`execute(): static`
+
+```php 
+$this->queryService->execute();
+```
 
 <br>
 
 #### getResults
 
-`getResults()`
+Return the results of the search query
+
+`getResults(): array`
+
+```php 
+$this->queryService->getResults();
+```
 
 <br>
 
 #### getTotal
 
-`getTotal()`
+Return the number of results
+
+`getTotal(): int`
+
+```php 
+$this->queryService->getTotal();
+```
 
 <br>
 
@@ -552,15 +700,39 @@ public function __construct(
 
 #### getMethod
 
+Returns the request method
+
 `getMethod(): string`
+
+```php 
+$this->requestService->getMethod();
+// GET
+```
+
+<br>
 
 #### getParameter
 
+Returns the request parameter
+
 `getParameter(): string`
+
+```php 
+$this->requestService->getParameter();
+// q
+```
+
+<br>
 
 #### getExpression
 
+Returns the searched expression
+
 `getExpression(): string`
+
+```php 
+$this->requestService->getExpression();
+```
 
 
 <br>
@@ -585,16 +757,52 @@ public function __construct(
 
 #### getTemplate
 
+Returns the path of the results page template.
+
 `getTemplate(): string`
+
+```php 
+$this->resultsService->getTemplate();
+// "@Search/results/base.html"
+```
+
+<br>
 
 #### getRoute
 
+Returns the name of the results page route.
+
 `getRoute(): string`
+
+```php 
+$this->resultsService->getRoute();
+// app_search
+```
+
+<br>
 
 #### getUrl
 
+Returns the absolute or relative URL of the results page route.
+
 `getUrl(bool $absolute=true): string`
+
+```php 
+$this->resultsService->getUrl();
+// site.com/search
+```
+
+<br>
 
 #### getPath
 
+Returns the relative Path of the results page route.
+
+Alias of `getUrl(false);`
+
 `getPath(): string`
+
+```php 
+$this->resultsService->getPath();
+// /search
+```

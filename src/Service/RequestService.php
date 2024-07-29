@@ -18,7 +18,7 @@ class RequestService
     }
 
     /**
-     * Return the requestmethod
+     * Returns the request method
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class RequestService
     }
 
     /**
-     * Return the request parameter
+     * Returns the request parameter
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class RequestService
     }
 
     /**
-     * Return the searched expression
+     * Returns the searched expression
      *
      * @return string|null
      */

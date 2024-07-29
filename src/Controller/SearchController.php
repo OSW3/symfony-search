@@ -1,12 +1,10 @@
 <?php 
 namespace OSW3\Search\Controller;
 
-use OSW3\Search\Service\FormService;
-use OSW3\Search\Service\ItemService;
 use OSW3\Search\Service\QueryService;
 use OSW3\Search\Service\EntityService;
+use OSW3\Search\Service\PaginationService;
 use Symfony\Component\Filesystem\Path;
-use OSW3\Search\Service\ResultsService;
 use OSW3\Search\Service\ProviderService;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,10 +18,9 @@ class SearchController extends AbstractController
         private KernelInterface $kernel,
         private ProviderService $providerService,
         private QueryService $queryService,
-        private ResultsService $resultsService,
         private EntityService $entityService,
 
-        private ItemService $itemService
+        private PaginationService $paginationService
     ){}
 
     #[Route('', name: 'search', methods: ['GET','POST'])]
@@ -55,14 +52,9 @@ class SearchController extends AbstractController
 
         /// Fetch
         /// --
+        $results = $this->queryService->fetch();
 
-$results = $this->queryService->fetch();
-foreach ($results as $item) {
-    $this->itemService->setEntity($item);
-    dump($this->itemService->getRouteParams());
 
-    // ...
-}
 
 
         /// Rendering

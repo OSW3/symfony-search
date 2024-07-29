@@ -30,7 +30,7 @@ class ProviderService
     }
 
     /**
-     * Return all providers names
+     * Returns all providers names
      *
      * @return array
      */
@@ -39,6 +39,12 @@ class ProviderService
         return array_keys($this->params);
     }
 
+    /**
+     * Set the context provider
+     *
+     * @param string $name
+     * @return static
+     */
     public function setCurrent(string $name): static 
     {
         $all = $this->getAll();
@@ -53,13 +59,18 @@ class ProviderService
         return $this;
     }
 
+    /**
+     * Returns the name of the current context provider
+     *
+     * @return string
+     */
     public function getCurrent(): string 
     {
         return $this->current;
     }
 
     /**
-     * Return options for a specific provider
+     * Returns the configuration of a specific provider
      *
      * @param string|null $provider
      * @return array

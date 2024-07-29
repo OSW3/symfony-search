@@ -16,7 +16,7 @@ class ResultsService
     }
 
     /**
-     * Return the template of the result page
+     * Returns the path of the results page template.
      *
      * @return string
      */
@@ -26,7 +26,7 @@ class ResultsService
     }
 
     /**
-     * Retuen the name of the route of the entity found
+     * Returns the name of the results page route.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class ResultsService
     }
 
     /**
-     * Return the URL of the found entity
+     * Returns the absolute or relative URL of the results page route.
      *
      * @return string
      */
@@ -51,7 +51,7 @@ class ResultsService
     }
 
     /**
-     * Return the Path of the found entity
+     * Returns the relative Path of the results page route.
      *
      * @return string
      */

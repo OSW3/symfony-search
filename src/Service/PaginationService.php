@@ -34,7 +34,7 @@ class PaginationService
     }
 
     /**
-     * Return the current page number
+     * Returns the current page number
      *
      * @return integer
      */
@@ -49,7 +49,7 @@ class PaginationService
     }
 
     /**
-     * Return the number of total pages
+     * Returns the number of total pages
      *
      * @return integer
      */
@@ -59,7 +59,7 @@ class PaginationService
     }
 
     /**
-     * Return pagination links
+     * Returns pagination links
      *
      * @param string|null $id
      * @return null|string|array
@@ -115,28 +115,48 @@ class PaginationService
         };
     }
 
+    /**
+     * Returns the URL of the first page
+     *
+     * @return string|null
+     */
     public function getFirstLink(): ?string
     {
         return $this->getLinks('first');
     }
 
+    /**
+     * Returns the URL of the last page
+     *
+     * @return string|null
+     */
     public function getLastLink(): ?string
     {
         return $this->getLinks('last');
     }
 
+    /**
+     * Returns the URL of the previous page
+     *
+     * @return string|null
+     */
     public function getPrevLink(): ?string
     {
         return $this->getLinks('prev');
     }
 
+    /**
+     * Returns the URL of the next page
+     *
+     * @return string|null
+     */
     public function getNextLink(): ?string
     {
         return $this->getLinks('next');
     }
 
     /**
-     * Return the PerPage value
+     * Returns the PerPage value
      *
      * @return integer
      */
