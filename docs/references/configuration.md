@@ -1,5 +1,7 @@
 # Configuration properties
 
+<br>
+
 ## provider
 
 Provide a configuration settings.  
@@ -15,6 +17,8 @@ search:
     second_provider: [ ... ]
 ```
 
+<br>
+
 ## form
 
 Search form configuration settings.
@@ -28,6 +32,8 @@ search:
     first_provider: 
         from: [ ... ]
 ```
+
+<br>
 
 ## template 
 
@@ -46,6 +52,8 @@ search:
             template: '@Search/form/base.html'
 ```
 
+<br>
+
 ## request
 
 Search request configuration settings.
@@ -59,6 +67,8 @@ search:
     first_provider: 
         request: [ ... ]
 ```
+
+<br>
 
 ## route
 
@@ -77,6 +87,8 @@ search:
             route: search
 ```
 
+<br>
+
 ## method
 
 Specifies the request method to execute the query.
@@ -93,6 +105,8 @@ search:
         request: 
             method: GET
 ```
+
+<br>
 
 ## parameter
 
@@ -111,6 +125,8 @@ search:
             parameter: q
 ```
 
+<br>
+
 ## results
 
 - Path: `search.<provider>.results`
@@ -122,6 +138,8 @@ search:
     first_provider: 
         results: [ ... ]
 ```
+
+<br>
 
 ## template
 
@@ -140,6 +158,8 @@ search:
             template: '@SeSearch/results/item.html.twig'
 ```
 
+<br>
+
 ## pagination
 
 Results pagination configuration settings.
@@ -154,6 +174,8 @@ search:
         results: 
             pagination: [ ... ]
 ```
+
+<br>
 
 ## parameter
 
@@ -174,6 +196,8 @@ search:
                 parameter: page
 ```
 
+<br>
+
 ## per_page
 
 Specifies the number of item shown per page.
@@ -190,6 +214,8 @@ search:
             pagination: 
                 parameter: page
 ```
+
+<br>
 
 ## highlight
 
@@ -210,6 +236,8 @@ search:
                 highlight: highlight
 ```
 
+<br>
+
 ## entities
 
 Configuration parameters for entities to be included in the search query.
@@ -223,6 +251,8 @@ search:
     first_provider: 
         entities: [ ... ]
 ```
+
+<br>
 
 ## entity
 
@@ -238,6 +268,8 @@ search:
         entities: 
             App\Entity\Book: [ ... ]
 ```
+
+<br>
 
 ## alias
 
@@ -260,6 +292,8 @@ search:
                 alias: book
 ```
 
+<br>
+
 ## serialize
 
 - Path: `search.<provider>.entities.<entity>.serialize`
@@ -274,6 +308,8 @@ search:
             App\Entity\Book:
                 serialize: [ ... ]
 ```
+
+<br>
 
 ## template
 
@@ -295,6 +331,8 @@ search:
                 template: '@Search/results/item.html'
 ```
 
+<br>
+
 ## route
 
 Entity route configuration settings.
@@ -310,6 +348,8 @@ search:
             App\Entity\Book:
                 route: [ ... ]
 ```
+
+<br>
 
 ## name
 
@@ -328,6 +368,8 @@ search:
                     name: app_book_show
 ```
 
+<br>
+
 ## parameters
 
 Specifies the names of the parameters from the previous route that should be generated.
@@ -345,6 +387,8 @@ search:
                 route: 
                     parameters: ['id']
 ```
+
+<br>
 
 ## title
 
@@ -367,6 +411,8 @@ search:
                 title: title
 ```
 
+<br>
+
 ## description
 
 Specifies the name of the entity property that you want to use as the description in the results.
@@ -387,6 +433,8 @@ search:
             App\Entity\Book:
                 description: description
 ```
+
+<br>
 
 ## illustration
 
@@ -409,6 +457,8 @@ search:
                 illustration: false
 ```
 
+<br>
+
 ## criteria
 
 Configuration parameters for query criteria.
@@ -424,6 +474,8 @@ search:
             App\Entity\Book:
                 criteria: [ ... ]
 ```
+
+<br>
 
 ## property
 
@@ -442,6 +494,8 @@ search:
                 criteria: 
                     title: [ ... ]
 ```
+
+<br>
 
 ## match
 

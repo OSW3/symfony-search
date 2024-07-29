@@ -21,6 +21,8 @@ bin/console debug:config SearchBundle
 
 ## Full configuration example
 
+In this example, we assume that you have created entities `App\Entity\Book` and `App\Entity\Product`
+
 ```yaml
 search:
     first_provider:
