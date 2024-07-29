@@ -32,11 +32,6 @@ class SearchController extends AbstractController
             return new Response("",404);
         }
 
-
-
-        /// Template
-        /// --
-
         // Get template
         $template = $this->getTemplate($provider);
 
@@ -44,21 +39,10 @@ class SearchController extends AbstractController
         // It makes a copy of the bundle template file that you can customize later
         $this->createTemplate($template);
 
-
-
         // Exclude some entities
-        $this->entityService->exclude("App\Entity\Product");
-
-
-        /// Fetch
-        /// --
+        // $this->entityService->exclude("App\Entity\Product");
+        
         $results = $this->queryService->fetch();
-
-
-
-
-        /// Rendering
-        /// --
 
         return $this->render($template, [
             'results' => $results,
@@ -68,7 +52,7 @@ class SearchController extends AbstractController
     private function createTemplate(string $template): void
     {
         $projectDir = $this->kernel->getProjectDir();
-        $source     = Path::join(__DIR__ . "/../../", "templates/results/base.html");
+        $source     = Path::join(__DIR__ . "/../../", "templates/results/base.sample");
         $target     = Path::join($projectDir, "templates", $template);
 
         if (preg_match("/^@Search/", $template) || file_exists($target)) {

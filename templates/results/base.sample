@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h2>Search Results</h2>
+
+    <div style="background-color: red; color: white; padding: 12px">
+        This page was automatically created by Search Bundle.<br>
+        It contains sample code to display the search result.<br><br>
+        This file is locatated at <b>{{ search_results_template() }}</b>
+    </div>
+
+    <hr>
+
+    {# 
+     # Search Pagination
+     # --
+     #
+     # You can use twig function: 
+     #      search_pagination()
+     #
+     # Or you can use twig  component: 
+     #      <twig:Search:Pagination />
+     #}
+    <a href="{{ search_pagination_first_link() }}">first</a>
+    <a href="{{ search_pagination_prev_link() }}">prev</a>
+    {% for page in search_pagination_links() %}
+        <a href="{{ page.url }}">
+            {{ loop.index }}
+            {% if page.current %}
+                <small>(current)</small>
+            {% endif %}
+        </a>
+    {% endfor %}
+    <a href="{{ search_pagination_next_link() }}">next</a>
+    <a href="{{ search_pagination_last_link() }}">last</a>
+
+    <hr>
+
+    <div><b>Searched expression</b>: {{ search_request_expression() }}</div>
+    <div><b>Total results</b>: {{ search_results_total() }}</div>
+    <div><b>Current page</b>: {{ search_pagination_page() }}</div>
+    <div><b>Total pages</b>: {{ search_pagination_pages() }}</div>
+    <div><b>Items per page</b>: {{ search_pagination_per_page() }}</div>
+
+    <hr>
+
+    {# 
+    # Results
+    # --
+    #
+    # Method 1 - Provided by the Search Bundle controller's "results" twig variables
+    #   {% for item in results %} ... {% endfor %}
+    # 
+    # Method 2 - Provided by the Search Bundle twig's function "search_results"
+    #   {% for item in search_results() %} ... {% endfor %}
+    #}
+    {% for item in search_results() %}
+    {{ search_set_item(item) }}
+        <twig:Search:Item :entity="item" />
+    {% endfor %}
+
+    {# {{ dump(search_provider_params()) }} #}
+
+{% endblock body %}

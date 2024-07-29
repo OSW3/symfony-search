@@ -85,6 +85,8 @@ class CustomSearchController extends AbstractController
 }
 ```
 
+<br>
+
 ## Step 4 - Display the results
 
 You ca use the default results page of the bundle or you can create your own customized results page.
