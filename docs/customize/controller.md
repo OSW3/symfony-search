@@ -34,7 +34,19 @@ class CustomSearchController extends AbstractController
 
 <br>
 
-## Step 2 - Set the route
+## Step 2 - Customize the route
+
+### Step 2.1 - Customize the route name and path
+
+Edit this line to custimize.
+
+```php
+#[Route('/custom/search', name: 'app_custom_search')]
+```
+
+<br>
+
+### Step 2.2 - Set the route
 
 Set your new route has the search request route in the `config/packages/search.yaml`.
 
@@ -75,4 +87,34 @@ class CustomSearchController extends AbstractController
 
 ## Step 4 - Display the results
 
+You ca use the default results page of the bundle or you can create your own customized results page.
+
+### Step 4.1 - Use the default results page
+
+```php 
+use OSW3\Search\Service\ResultsService;
+
+public function __construct(
+    // ...
+    private ResultsService $resultsService
+){}
+
+// ...
+
+public function index(): Response
+{
+    // ...
+
+    $template = $this->resultsService->getTemplate();
+    
+    return $this->render($template, [
+        'results' => $results,
+    ]);
+}
+```
+
 <br>
+
+### Step 4.2 - Create your own customized results page
+
+Ignore the Step 4.1 ans see how to [customize the results page template](./template.md)
