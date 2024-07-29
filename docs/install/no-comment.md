@@ -12,6 +12,8 @@ Step by step. No comment.
 composer require osw3/symfony-search
 ```
 
+<br>
+
 ### Step 1.b - Edit the line `"osw3/symfony-search"` of `composer.json` (optional)
 
 ```json 
