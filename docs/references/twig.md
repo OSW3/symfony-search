@@ -80,6 +80,22 @@ Return the searched expression
 
 <br>
 
+### search_request_preparation_time
+
+`search_request_preparation_time()`
+
+Returns the request preparation timing
+
+<br>
+
+### search_request_execution_time
+
+`search_request_execution_time()`
+
+Return the Returns the request execution timing
+
+<br>
+
 ## Form
 
 ### search_form
