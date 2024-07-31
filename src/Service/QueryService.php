@@ -10,9 +10,14 @@ use OSW3\Search\Service\PaginationService;
 
 class QueryService 
 {
-    private array $queries = [];
-    private array $results = [];
-    private int $total     = 0;
+    private array $queries        = [];
+    private array $results        = [];
+    private int $total            = 0;
+    private int $preparation_time = 0;
+    private int $execution_time   = 0;
+    private int $total_time       = 0;
+
+    private array $timers = [];
 
     public function __construct(
         private EntityManagerInterface $entityManager,
@@ -40,6 +45,9 @@ class QueryService
      */
     public function prepare(): static
     {
+        // $tse_start = microtime(true);
+        $this->setTime('prepare');
+
         $queries = [];
 
         // Searched expression
@@ -89,6 +97,10 @@ class QueryService
 
         $this->queries = $queries;
 
+        // $tse_end = microtime(true);
+        // $this->preparation_time = $tse_end - $tse_start;
+        $this->setTime('prepare');
+
         return $this;
     }
     
@@ -99,6 +111,10 @@ class QueryService
      */
     public function execute(): static
     {
+        // $tse_start = microtime(true);
+        $this->setTime('execute');
+
+
         // Searched expression
         // --
 
@@ -116,6 +132,10 @@ class QueryService
 
             $this->results[ $entity ] = $results;
         }
+
+        // $tse_end = microtime(true);
+        // $this->execution_time = $tse_end - $tse_start;
+        $this->setTime('execute');
 
         return $this;
     }
@@ -160,6 +180,9 @@ class QueryService
 
         $results = $this->paginationService->paginate($results);
         
+        // dump($this->preparation_time);
+        // dump($this->execution_time);
+        // dump($this->timers);
 
 
 
@@ -260,5 +283,37 @@ class QueryService
         array_multisort($titles, $direction, $validItems);
 
         return $validItems;
+    }
+
+    private function setTime(string $id, ?int $now=null)
+    {
+        if ($now === null) {
+            $now = microtime(true);
+        }
+
+        if (!isset($this->timers[$id])){
+            $this->timers[$id] = ['s' => null, 'e' => null, 't' => 0];
+        }
+
+        if ($this->timers[$id]['s'] === null) {
+            $this->timers[$id]['s'] = $now;
+        }
+        else if ($this->timers[$id]['e'] === null) {
+            $this->timers[$id]['e'] = $now;
+        }
+
+        if ($this->timers[$id]['s'] !== null && $this->timers[$id]['e'] !== null) {
+            $t = $this->timers[$id]['e'] - $this->timers[$id]['s'];
+            $this->timers[$id]['t'] = floatval($t) * 1000;
+        }
+    }
+
+    public function getPreparationTime(): int 
+    {
+        return $this->timers['prepare']['t'];
+    }
+    public function getExecutionTime(): int 
+    {
+        return $this->timers['execute']['t'];
     }
 }

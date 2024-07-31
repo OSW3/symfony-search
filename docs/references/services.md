@@ -733,6 +733,28 @@ Returns the searched expression
 ```php 
 $this->requestService->getExpression();
 ```
+<br>
+
+#### getPreparationTime
+
+Returns the request preparation timing
+
+`getPreparationTime(): string`
+
+```php 
+$this->requestService->getPreparationTime();
+```
+<br>
+
+#### getExecutionTime
+
+Returns the request execution timing
+
+`getExecutionTime(): string`
+
+```php 
+$this->requestService->getExecutionTime();
+```
 
 
 <br>

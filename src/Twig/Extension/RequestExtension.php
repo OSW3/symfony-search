@@ -14,6 +14,8 @@ class RequestExtension extends AbstractExtension
             new TwigFunction(Configuration::NAME."_request_method", [RequestExtensionRuntime::class, 'getMethod']),
             new TwigFunction(Configuration::NAME."_request_parameter", [RequestExtensionRuntime::class, 'getParameter']),
             new TwigFunction(Configuration::NAME."_request_expression", [RequestExtensionRuntime::class, 'getExpression']),
+            new TwigFunction(Configuration::NAME."_request_preparation_time", [RequestExtensionRuntime::class, 'getPreparationTime']),
+            new TwigFunction(Configuration::NAME."_request_execution_time", [RequestExtensionRuntime::class, 'getExecutionTime']),
         ];
     }
 }
