@@ -59,6 +59,4 @@
         <twig:Search:Item :entity="item" />
     {% endfor %}
 
-    {# {{ dump(search_provider_params()) }} #}
-
 {% endblock body %}
