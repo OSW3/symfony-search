@@ -1,4 +1,4 @@
-# Results page
+# Results item
 
 ## Customized your iwn results template
 

@@ -739,7 +739,7 @@ $this->requestService->getExpression();
 
 Returns the request preparation timing
 
-`getPreparationTime(): string`
+`getPreparationTime(): int`
 
 ```php 
 $this->requestService->getPreparationTime();
@@ -750,7 +750,7 @@ $this->requestService->getPreparationTime();
 
 Returns the request execution timing
 
-`getExecutionTime(): string`
+`getExecutionTime(): int`
 
 ```php 
 $this->requestService->getExecutionTime();
