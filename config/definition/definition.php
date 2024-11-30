@@ -140,6 +140,8 @@ return static function($definition)
                     ->defaultValue(RequestOperators::LIKE->value)
                 ->end()
 
+                // TODO: Add force UPPER or Lower case searched expression
+
             ->end()->end()->end()
 
         ->end()->end()->end()

@@ -1,6 +1,6 @@
 # Symfony Search
 
-Add search to your app pages.
+Add a search tool to your app.
 
 - Installation
     - [Installation (no comment process)](./docs/install/no-comment.md)

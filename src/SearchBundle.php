@@ -28,11 +28,13 @@ class SearchBundle extends Bundle
             // Search Bundle Components namespace
             $classPath = explode("\\", Search::class);
             array_pop($classPath);
-            $newClassPath = implode("\\", $classPath)."\\";
+            $templateDirectory = implode("\\", $classPath)."\\";
 
-            if (!isset( $twig_component_ArrayContent['twig_component']['defaults'][$newClassPath] ))
+            $namePrefix = "@Search/";
+
+            if (!isset( $twig_component_ArrayContent['twig_component']['defaults'][$templateDirectory] ))
             {
-                file_put_contents($twig_component_Filepath, Yaml::dump(array_merge_recursive($twig_component_ArrayContent, ['twig_component' => ['defaults' => [$newClassPath => "@Search/"]]]), 4));
+                file_put_contents($twig_component_Filepath, Yaml::dump(array_merge_recursive($twig_component_ArrayContent, ['twig_component' => ['defaults' => [$templateDirectory => $namePrefix]]]), 4));
             }
         }
 
