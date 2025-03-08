@@ -21,7 +21,7 @@ class ProviderService
         $this->request = $this->requestStack->getCurrentRequest();
 
         if (empty($this->params)) {
-            throw new \Exception("There is no provider defined in the confg/packages/search.yaml");
+            throw new \Exception("There is no provider defined in the config/packages/search.yaml");
         }
 
         // Set the default provider
